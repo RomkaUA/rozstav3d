@@ -1,0 +1,3017 @@
+{
+    "format":  "rozstav-model-catalog",
+    "version":  1,
+    "about":  "Стандартна бібліотека реальних 3D-моделей. Усі моделі Poly Haven, ліцензія CC0 1.0 (суспільне надбання, комерційне використання дозволене, зазначення автора не обов\u0027язкове).",
+    "generated":  "2026-11-02",
+    "models":  [
+                   {
+                       "id":  "ph_sofa_01",
+                       "name":  "Диван класичний",
+                       "nameEn":  "Sofa 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/Sofa_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Sofa_01.png",
+                       "dimensions":  {
+                                          "w":  157,
+                                          "d":  66,
+                                          "h":  80
+                                      },
+                       "mount":  "floor",
+                       "bytes":  516996,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/Sofa_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_sofa_02",
+                       "name":  "Диван м\u0027який",
+                       "nameEn":  "Sofa 02",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/sofa_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/sofa_02.png",
+                       "dimensions":  {
+                                          "w":  181,
+                                          "d":  82,
+                                          "h":  71
+                                      },
+                       "mount":  "floor",
+                       "bytes":  425580,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/sofa_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_sofa_03",
+                       "name":  "Диван сучасний",
+                       "nameEn":  "Sofa 03",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/sofa_03.glb",
+                       "thumbnail":  "assets/thumbnails/free/sofa_03.png",
+                       "dimensions":  {
+                                          "w":  273,
+                                          "d":  93,
+                                          "h":  112
+                                      },
+                       "mount":  "floor",
+                       "bytes":  818172,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Fran Calvente",
+                                       "sourceUrl":  "https://polyhaven.com/a/sofa_03",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_sofa",
+                       "name":  "Дерев\u0027яна софа",
+                       "nameEn":  "Painted Wooden Sofa",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/painted_wooden_sofa.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_sofa.png",
+                       "dimensions":  {
+                                          "w":  245,
+                                          "d":  79,
+                                          "h":  128
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2099376,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_sofa",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_sofa",
+                       "name":  "Софа в азійському стилі",
+                       "nameEn":  "Chinese Sofa",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/chinese_sofa.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_sofa.png",
+                       "dimensions":  {
+                                          "w":  229,
+                                          "d":  97,
+                                          "h":  86
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1571052,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_sofa",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_day_bed",
+                       "name":  "Кушетка вінтажна",
+                       "nameEn":  "Vintage Day Bed",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/vintage_day_bed.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_day_bed.png",
+                       "dimensions":  {
+                                          "w":  197,
+                                          "d":  85,
+                                          "h":  113
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2424768,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Aron Łyczek",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_day_bed",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_armchair_01",
+                       "name":  "Крісло класичне",
+                       "nameEn":  "Arm Chair 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/ArmChair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/ArmChair_01.png",
+                       "dimensions":  {
+                                          "w":  85,
+                                          "d":  77,
+                                          "h":  107
+                                      },
+                       "mount":  "floor",
+                       "bytes":  768184,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/ArmChair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_greenchair_01",
+                       "name":  "Крісло зелене",
+                       "nameEn":  "Green Chair 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/GreenChair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/GreenChair_01.png",
+                       "dimensions":  {
+                                          "w":  67,
+                                          "d":  66,
+                                          "h":  106
+                                      },
+                       "mount":  "floor",
+                       "bytes":  607076,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/GreenChair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_modern_arm_chair_01",
+                       "name":  "Крісло сучасне",
+                       "nameEn":  "Modern Arm Chair 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/modern_arm_chair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/modern_arm_chair_01.png",
+                       "dimensions":  {
+                                          "w":  82,
+                                          "d":  99,
+                                          "h":  102
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2696208,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Vibrant Nordic",
+                                       "sourceUrl":  "https://polyhaven.com/a/modern_arm_chair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_mid_century_lounge_chair",
+                       "name":  "Лаунж-крісло mid-century",
+                       "nameEn":  "Mid Century Lounge Chair",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/mid_century_lounge_chair.glb",
+                       "thumbnail":  "assets/thumbnails/free/mid_century_lounge_chair.png",
+                       "dimensions":  {
+                                          "w":  101,
+                                          "d":  119,
+                                          "h":  117
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2085980,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/mid_century_lounge_chair",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_rockingchair_01",
+                       "name":  "Крісло-гойдалка",
+                       "nameEn":  "Rockingchair 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/Rockingchair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Rockingchair_01.png",
+                       "dimensions":  {
+                                          "w":  71,
+                                          "d":  83,
+                                          "h":  99
+                                      },
+                       "mount":  "floor",
+                       "bytes":  803788,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Jorge Camacho",
+                                       "sourceUrl":  "https://polyhaven.com/a/Rockingchair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_armchair",
+                       "name":  "Крісло дерев\u0027яне",
+                       "nameEn":  "Chinese Armchair",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/chinese_armchair.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_armchair.png",
+                       "dimensions":  {
+                                          "w":  85,
+                                          "d":  79,
+                                          "h":  159
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1702284,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_armchair",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ottoman_01",
+                       "name":  "Пуф-оттоманка",
+                       "nameEn":  "Ottoman 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/Ottoman_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Ottoman_01.png",
+                       "dimensions":  {
+                                          "w":  88,
+                                          "d":  62,
+                                          "h":  62
+                                      },
+                       "mount":  "floor",
+                       "bytes":  651156,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Caspian Fortune",
+                                       "sourceUrl":  "https://polyhaven.com/a/Ottoman_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_coffeetable_01",
+                       "name":  "Журнальний столик",
+                       "nameEn":  "Coffee Table 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/CoffeeTable_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/CoffeeTable_01.png",
+                       "dimensions":  {
+                                          "w":  154,
+                                          "d":  97,
+                                          "h":  52
+                                      },
+                       "mount":  "floor",
+                       "bytes":  956644,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Fernando Quinn",
+                                       "sourceUrl":  "https://polyhaven.com/a/CoffeeTable_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_coffee_table_round_01",
+                       "name":  "Журнальний столик круглий",
+                       "nameEn":  "Coffee Table Round 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/coffee_table_round_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/coffee_table_round_01.png",
+                       "dimensions":  {
+                                          "w":  130,
+                                          "d":  130,
+                                          "h":  49
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1562152,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/coffee_table_round_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_modern_coffee_table_01",
+                       "name":  "Журнальний столик модерн",
+                       "nameEn":  "Modern Coffee Table 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/modern_coffee_table_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/modern_coffee_table_01.png",
+                       "dimensions":  {
+                                          "w":  120,
+                                          "d":  60,
+                                          "h":  39
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1330284,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Amin",
+                                       "sourceUrl":  "https://polyhaven.com/a/modern_coffee_table_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "orient":  -90
+                   },
+                   {
+                       "id":  "ph_modern_coffee_table_02",
+                       "name":  "Журнальний столик скляний",
+                       "nameEn":  "Modern Coffee Table 02",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/modern_coffee_table_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/modern_coffee_table_02.png",
+                       "dimensions":  {
+                                          "w":  120,
+                                          "d":  120,
+                                          "h":  37
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2953924,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Amin",
+                                       "sourceUrl":  "https://polyhaven.com/a/modern_coffee_table_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_industrial_coffee_table",
+                       "name":  "Журнальний столик лофт",
+                       "nameEn":  "Industrial Coffee Table",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/industrial_coffee_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/industrial_coffee_table.png",
+                       "dimensions":  {
+                                          "w":  78,
+                                          "d":  76,
+                                          "h":  64
+                                      },
+                       "mount":  "floor",
+                       "bytes":  3243636,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/industrial_coffee_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_tea_table",
+                       "name":  "Чайний столик",
+                       "nameEn":  "Chinese Tea Table",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/chinese_tea_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_tea_table.png",
+                       "dimensions":  {
+                                          "w":  84,
+                                          "d":  84,
+                                          "h":  50
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1580268,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_tea_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_side_table_01",
+                       "name":  "Приставний столик",
+                       "nameEn":  "Side Table 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/side_table_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/side_table_01.png",
+                       "dimensions":  {
+                                          "w":  55,
+                                          "d":  45,
+                                          "h":  55
+                                      },
+                       "mount":  "floor",
+                       "bytes":  504300,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/side_table_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_side_table_tall_01",
+                       "name":  "Приставний столик високий",
+                       "nameEn":  "Side Table Tall 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/side_table_tall_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/side_table_tall_01.png",
+                       "dimensions":  {
+                                          "w":  38,
+                                          "d":  38,
+                                          "h":  76
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1553628,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/side_table_tall_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_classicconsole_01",
+                       "name":  "Консоль класична",
+                       "nameEn":  "Classic Console 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/ClassicConsole_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/ClassicConsole_01.png",
+                       "dimensions":  {
+                                          "w":  154,
+                                          "d":  59,
+                                          "h":  95
+                                      },
+                       "mount":  "floor",
+                       "bytes":  739708,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/ClassicConsole_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_console_table",
+                       "name":  "Консоль дерев\u0027яна",
+                       "nameEn":  "Chinese Console Table",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/chinese_console_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_console_table.png",
+                       "dimensions":  {
+                                          "w":  172,
+                                          "d":  34,
+                                          "h":  66
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2791156,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_console_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_shelf_01",
+                       "name":  "Стелаж",
+                       "nameEn":  "Shelf 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/Shelf_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Shelf_01.png",
+                       "dimensions":  {
+                                          "w":  100,
+                                          "d":  26,
+                                          "h":  208
+                                      },
+                       "mount":  "floor",
+                       "bytes":  604500,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Gabriel Radić",
+                                       "sourceUrl":  "https://polyhaven.com/a/Shelf_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_bookshelf_worn",
+                       "name":  "Книжкова шафа",
+                       "nameEn":  "Wooden Bookshelf Worn",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/wooden_bookshelf_worn.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_bookshelf_worn.png",
+                       "dimensions":  {
+                                          "w":  137,
+                                          "d":  58,
+                                          "h":  206
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2776164,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_bookshelf_worn",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_display_shelves_01",
+                       "name":  "Відкриті полиці",
+                       "nameEn":  "Wooden Display Shelves 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/wooden_display_shelves_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_display_shelves_01.png",
+                       "dimensions":  {
+                                          "w":  108,
+                                          "d":  37,
+                                          "h":  156
+                                      },
+                       "mount":  "floor",
+                       "bytes":  468428,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_display_shelves_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "orient":  -90
+                   },
+                   {
+                       "id":  "ph_steel_frame_shelves_03",
+                       "name":  "Металевий стелаж",
+                       "nameEn":  "Steel Frame Shelves 03",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/steel_frame_shelves_03.glb",
+                       "thumbnail":  "assets/thumbnails/free/steel_frame_shelves_03.png",
+                       "dimensions":  {
+                                          "w":  235,
+                                          "d":  72,
+                                          "h":  231
+                                      },
+                       "mount":  "floor",
+                       "bytes":  3559476,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/steel_frame_shelves_03",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_shelves",
+                       "name":  "Фарбовані полиці",
+                       "nameEn":  "Painted Wooden Shelves",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/painted_wooden_shelves.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_shelves.png",
+                       "dimensions":  {
+                                          "w":  51,
+                                          "d":  37,
+                                          "h":  113
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2109652,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_shelves",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_modern_wooden_cabinet",
+                       "name":  "Комод сучасний",
+                       "nameEn":  "Modern Wooden Cabinet",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/modern_wooden_cabinet.glb",
+                       "thumbnail":  "assets/thumbnails/free/modern_wooden_cabinet.png",
+                       "dimensions":  {
+                                          "w":  244,
+                                          "d":  52,
+                                          "h":  68
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2850852,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Patrik Pangerl",
+                                       "sourceUrl":  "https://polyhaven.com/a/modern_wooden_cabinet",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_cabinet_01",
+                       "name":  "Сервант вінтажний",
+                       "nameEn":  "Vintage Cabinet 01",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/vintage_cabinet_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_cabinet_01.png",
+                       "dimensions":  {
+                                          "w":  202,
+                                          "d":  67,
+                                          "h":  224
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2862024,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_cabinet_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_cabinet",
+                       "name":  "Шафа-вітрина",
+                       "nameEn":  "Chinese Cabinet",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/chinese_cabinet.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_cabinet.png",
+                       "dimensions":  {
+                                          "w":  126,
+                                          "d":  55,
+                                          "h":  287
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2337496,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_cabinet",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_drawer_cabinet",
+                       "name":  "Тумба з шухлядами",
+                       "nameEn":  "Drawer Cabinet",
+                       "category":  "living",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/living/drawer_cabinet.glb",
+                       "thumbnail":  "assets/thumbnails/free/drawer_cabinet.png",
+                       "dimensions":  {
+                                          "w":  114,
+                                          "d":  49,
+                                          "h":  188
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1140212,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/drawer_cabinet",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_gothicbed_01",
+                       "name":  "Ліжко різьблене",
+                       "nameEn":  "Gothic Bed 01",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/GothicBed_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/GothicBed_01.png",
+                       "dimensions":  {
+                                          "w":  149,
+                                          "d":  204,
+                                          "h":  153
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1154248,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/GothicBed_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_old_bed_frame",
+                       "name":  "Ліжко металеве",
+                       "nameEn":  "Old Bed Frame",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/old_bed_frame.glb",
+                       "thumbnail":  "assets/thumbnails/free/old_bed_frame.png",
+                       "dimensions":  {
+                                          "w":  90,
+                                          "d":  200,
+                                          "h":  120
+                                      },
+                       "mount":  "floor",
+                       "bytes":  4040420,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Luca B",
+                                       "sourceUrl":  "https://polyhaven.com/a/old_bed_frame",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_classicnightstand_01",
+                       "name":  "Приліжкова тумба класична",
+                       "nameEn":  "Classic Nightstand 01",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/ClassicNightstand_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/ClassicNightstand_01.png",
+                       "dimensions":  {
+                                          "w":  57,
+                                          "d":  42,
+                                          "h":  70
+                                      },
+                       "mount":  "floor",
+                       "bytes":  443948,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/ClassicNightstand_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_nightstand",
+                       "name":  "Приліжкова тумба фарбована",
+                       "nameEn":  "Painted Wooden Nightstand",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/painted_wooden_nightstand.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_nightstand.png",
+                       "dimensions":  {
+                                          "w":  50,
+                                          "d":  51,
+                                          "h":  62
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2149816,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_nightstand",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_gothiccommode_01",
+                       "name":  "Комод різьблений",
+                       "nameEn":  "Gothic Commode 01",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/GothicCommode_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/GothicCommode_01.png",
+                       "dimensions":  {
+                                          "w":  120,
+                                          "d":  58,
+                                          "h":  121
+                                      },
+                       "mount":  "floor",
+                       "bytes":  601376,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/GothicCommode_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chinese_commode",
+                       "name":  "Комод азійський",
+                       "nameEn":  "Chinese Commode",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/chinese_commode.glb",
+                       "thumbnail":  "assets/thumbnails/free/chinese_commode.png",
+                       "dimensions":  {
+                                          "w":  449,
+                                          "d":  117,
+                                          "h":  202
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1907448,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/chinese_commode",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_cabinet",
+                       "name":  "Шафа фарбована",
+                       "nameEn":  "Painted Wooden Cabinet",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/painted_wooden_cabinet.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_cabinet.png",
+                       "dimensions":  {
+                                          "w":  119,
+                                          "d":  62,
+                                          "h":  118
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1858100,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_cabinet",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_cabinet_02",
+                       "name":  "Шафа фарбована вузька",
+                       "nameEn":  "Painted Wooden Cabinet 02",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/painted_wooden_cabinet_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_cabinet_02.png",
+                       "dimensions":  {
+                                          "w":  100,
+                                          "d":  73,
+                                          "h":  257
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1593860,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_cabinet_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_wooden_drawer_01",
+                       "name":  "Комод вінтажний",
+                       "nameEn":  "Vintage Wooden Drawer 01",
+                       "category":  "bedroom",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/bedroom/vintage_wooden_drawer_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_wooden_drawer_01.png",
+                       "dimensions":  {
+                                          "w":  172,
+                                          "d":  101,
+                                          "h":  109
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2083856,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_wooden_drawer_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_dining_table",
+                       "name":  "Обідній стіл",
+                       "nameEn":  "Dining Table",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/dining_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/dining_table.png",
+                       "dimensions":  {
+                                          "w":  226,
+                                          "d":  139,
+                                          "h":  88
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2282336,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Aron Łyczek",
+                                       "sourceUrl":  "https://polyhaven.com/a/dining_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_woodentable_01",
+                       "name":  "Стіл дерев\u0027яний",
+                       "nameEn":  "Wooden Table 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/WoodenTable_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/WoodenTable_01.png",
+                       "dimensions":  {
+                                          "w":  180,
+                                          "d":  66,
+                                          "h":  55
+                                      },
+                       "mount":  "floor",
+                       "bytes":  553376,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ethan Place",
+                                       "sourceUrl":  "https://polyhaven.com/a/WoodenTable_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_woodentable_02",
+                       "name":  "Стіл дерев\u0027яний масивний",
+                       "nameEn":  "Wooden Table 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/WoodenTable_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/WoodenTable_02.png",
+                       "dimensions":  {
+                                          "w":  30,
+                                          "d":  30,
+                                          "h":  42
+                                      },
+                       "mount":  "floor",
+                       "bytes":  502336,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Fran Calvente",
+                                       "sourceUrl":  "https://polyhaven.com/a/WoodenTable_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_table_02",
+                       "name":  "Стіл кухонний",
+                       "nameEn":  "Wooden Table 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/wooden_table_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_table_02.png",
+                       "dimensions":  {
+                                          "w":  113,
+                                          "d":  71,
+                                          "h":  80
+                                      },
+                       "mount":  "floor",
+                       "bytes":  484344,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Serhii Khromov",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_table_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_round_wooden_table_01",
+                       "name":  "Стіл круглий",
+                       "nameEn":  "Round Wooden Table 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/round_wooden_table_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/round_wooden_table_01.png",
+                       "dimensions":  {
+                                          "w":  140,
+                                          "d":  140,
+                                          "h":  101
+                                      },
+                       "mount":  "floor",
+                       "bytes":  548808,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/round_wooden_table_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_round_wooden_table_02",
+                       "name":  "Стіл круглий малий",
+                       "nameEn":  "Round Wooden Table 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/round_wooden_table_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/round_wooden_table_02.png",
+                       "dimensions":  {
+                                          "w":  80,
+                                          "d":  80,
+                                          "h":  75
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1920268,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/round_wooden_table_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_small_wooden_table_01",
+                       "name":  "Столик малий",
+                       "nameEn":  "Small Wooden Table 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/small_wooden_table_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/small_wooden_table_01.png",
+                       "dimensions":  {
+                                          "w":  92,
+                                          "d":  44,
+                                          "h":  53
+                                      },
+                       "mount":  "floor",
+                       "bytes":  413764,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/small_wooden_table_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_table",
+                       "name":  "Стіл фарбований",
+                       "nameEn":  "Painted Wooden Table",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/painted_wooden_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_table.png",
+                       "dimensions":  {
+                                          "w":  241,
+                                          "d":  114,
+                                          "h":  96
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1778456,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_gallinera_table",
+                       "name":  "Стіл дизайнерський",
+                       "nameEn":  "Gallinera Table",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/gallinera_table.glb",
+                       "thumbnail":  "assets/thumbnails/free/gallinera_table.png",
+                       "dimensions":  {
+                                          "w":  83,
+                                          "d":  52,
+                                          "h":  49
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1836516,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/gallinera_table",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_dining_chair_02",
+                       "name":  "Стілець обідній",
+                       "nameEn":  "Dining Chair 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/dining_chair_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/dining_chair_02.png",
+                       "dimensions":  {
+                                          "w":  43,
+                                          "d":  58,
+                                          "h":  97
+                                      },
+                       "mount":  "floor",
+                       "bytes":  920096,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/dining_chair_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_woodenchair_01",
+                       "name":  "Стілець дерев\u0027яний",
+                       "nameEn":  "Wooden Chair 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/WoodenChair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/WoodenChair_01.png",
+                       "dimensions":  {
+                                          "w":  69,
+                                          "d":  66,
+                                          "h":  227
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1078556,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Jake Mobley",
+                                       "sourceUrl":  "https://polyhaven.com/a/WoodenChair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_chair_01",
+                       "name":  "Стілець фарбований",
+                       "nameEn":  "Painted Wooden Chair 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/painted_wooden_chair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_chair_01.png",
+                       "dimensions":  {
+                                          "w":  43,
+                                          "d":  54,
+                                          "h":  96
+                                      },
+                       "mount":  "floor",
+                       "bytes":  491540,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_chair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_chair_02",
+                       "name":  "Стілець фарбований 2",
+                       "nameEn":  "Painted Wooden Chair 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/painted_wooden_chair_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_chair_02.png",
+                       "dimensions":  {
+                                          "w":  64,
+                                          "d":  66,
+                                          "h":  126
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2395300,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_chair_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_gallinera_chair",
+                       "name":  "Стілець дизайнерський",
+                       "nameEn":  "Gallinera Chair",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/gallinera_chair.glb",
+                       "thumbnail":  "assets/thumbnails/free/gallinera_chair.png",
+                       "dimensions":  {
+                                          "w":  58,
+                                          "d":  60,
+                                          "h":  103
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2357732,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/gallinera_chair",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_plastic_monobloc_chair_01",
+                       "name":  "Стілець пластиковий",
+                       "nameEn":  "Plastic Monobloc Chair 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/plastic_monobloc_chair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/plastic_monobloc_chair_01.png",
+                       "dimensions":  {
+                                          "w":  64,
+                                          "d":  63,
+                                          "h":  88
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1951816,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/plastic_monobloc_chair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_bar_chair_round_01",
+                       "name":  "Барний стілець",
+                       "nameEn":  "Bar Chair Round 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/bar_chair_round_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/bar_chair_round_01.png",
+                       "dimensions":  {
+                                          "w":  48,
+                                          "d":  49,
+                                          "h":  75
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2811300,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Dairon Sanchez",
+                                       "sourceUrl":  "https://polyhaven.com/a/bar_chair_round_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_metal_stool_01",
+                       "name":  "Табурет металевий",
+                       "nameEn":  "Metal Stool 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/metal_stool_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/metal_stool_01.png",
+                       "dimensions":  {
+                                          "w":  35,
+                                          "d":  35,
+                                          "h":  88
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2285960,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/metal_stool_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_stool_01",
+                       "name":  "Табурет дерев\u0027яний",
+                       "nameEn":  "Wooden Stool 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/wooden_stool_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_stool_01.png",
+                       "dimensions":  {
+                                          "w":  43,
+                                          "d":  44,
+                                          "h":  44
+                                      },
+                       "mount":  "floor",
+                       "bytes":  960732,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_stool_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_stool_02",
+                       "name":  "Табурет дерев\u0027яний 2",
+                       "nameEn":  "Wooden Stool 02",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/wooden_stool_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_stool_02.png",
+                       "dimensions":  {
+                                          "w":  27,
+                                          "d":  18,
+                                          "h":  18
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2654476,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_stool_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_folding_wooden_stool",
+                       "name":  "Табурет складаний",
+                       "nameEn":  "Folding Wooden Stool",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/folding_wooden_stool.glb",
+                       "thumbnail":  "assets/thumbnails/free/folding_wooden_stool.png",
+                       "dimensions":  {
+                                          "w":  53,
+                                          "d":  55,
+                                          "h":  44
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2266904,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/folding_wooden_stool",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_microwave",
+                       "name":  "Мікрохвильовка",
+                       "nameEn":  "Vintage Microwave",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/vintage_microwave.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_microwave.png",
+                       "dimensions":  {
+                                          "w":  107,
+                                          "d":  75,
+                                          "h":  53
+                                      },
+                       "mount":  "top",
+                       "bytes":  2120464,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Adam Nekola",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_microwave",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_electric_kettle",
+                       "name":  "Електрочайник",
+                       "nameEn":  "Vintage Electric Kettle",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/vintage_electric_kettle.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_electric_kettle.png",
+                       "dimensions":  {
+                                          "w":  32,
+                                          "d":  25,
+                                          "h":  30
+                                      },
+                       "mount":  "top",
+                       "bytes":  2969656,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "SV Garip",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_electric_kettle",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_tea_set_01",
+                       "name":  "Чайний сервіз",
+                       "nameEn":  "Tea Set 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/tea_set_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/tea_set_01.png",
+                       "dimensions":  {
+                                          "w":  92,
+                                          "d":  48,
+                                          "h":  16
+                                      },
+                       "mount":  "top",
+                       "bytes":  2276156,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock, Rico Cilliers, Jurita Burger",
+                                       "sourceUrl":  "https://polyhaven.com/a/tea_set_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wooden_bowl_01",
+                       "name":  "Дерев\u0027яна миска",
+                       "nameEn":  "Wooden Bowl 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/wooden_bowl_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_bowl_01.png",
+                       "dimensions":  {
+                                          "w":  31,
+                                          "d":  31,
+                                          "h":  9
+                                      },
+                       "mount":  "top",
+                       "bytes":  1822228,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Oliver Harries",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_bowl_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_jug_01",
+                       "name":  "Глечик",
+                       "nameEn":  "Jug 01",
+                       "category":  "kitchen",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kitchen/jug_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/jug_01.png",
+                       "dimensions":  {
+                                          "w":  28,
+                                          "d":  17,
+                                          "h":  21
+                                      },
+                       "mount":  "top",
+                       "bytes":  1226796,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/jug_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_schooldesk_01",
+                       "name":  "Парта",
+                       "nameEn":  "School Desk 01",
+                       "category":  "office",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/office/SchoolDesk_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/SchoolDesk_01.png",
+                       "dimensions":  {
+                                          "w":  71,
+                                          "d":  55,
+                                          "h":  88
+                                      },
+                       "mount":  "floor",
+                       "bytes":  420656,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ethan Place",
+                                       "sourceUrl":  "https://polyhaven.com/a/SchoolDesk_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_metal_office_desk",
+                       "name":  "Письмовий стіл металевий",
+                       "nameEn":  "Metal Office Desk",
+                       "category":  "office",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/office/metal_office_desk.glb",
+                       "thumbnail":  "assets/thumbnails/free/metal_office_desk.png",
+                       "dimensions":  {
+                                          "w":  200,
+                                          "d":  95,
+                                          "h":  79
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1601008,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/metal_office_desk",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_schoolchair_01",
+                       "name":  "Стілець учнівський",
+                       "nameEn":  "School Chair 01",
+                       "category":  "office",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/office/SchoolChair_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/SchoolChair_01.png",
+                       "dimensions":  {
+                                          "w":  57,
+                                          "d":  68,
+                                          "h":  101
+                                      },
+                       "mount":  "floor",
+                       "bytes":  483748,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ethan Place",
+                                       "sourceUrl":  "https://polyhaven.com/a/SchoolChair_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_classic_laptop",
+                       "name":  "Ноутбук",
+                       "nameEn":  "Classic Laptop",
+                       "category":  "office",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/office/classic_laptop.glb",
+                       "thumbnail":  "assets/thumbnails/free/classic_laptop.png",
+                       "dimensions":  {
+                                          "w":  65,
+                                          "d":  49,
+                                          "h":  54
+                                      },
+                       "mount":  "top",
+                       "bytes":  2181136,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Arrangemonk",
+                                       "sourceUrl":  "https://polyhaven.com/a/classic_laptop",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_standing_chalkboard_01",
+                       "name":  "Дошка для малювання",
+                       "nameEn":  "Standing Chalkboard 01",
+                       "category":  "kids",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kids/standing_chalkboard_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/standing_chalkboard_01.png",
+                       "dimensions":  {
+                                          "w":  92,
+                                          "d":  76,
+                                          "h":  151
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2615412,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "ParzivalCG",
+                                       "sourceUrl":  "https://polyhaven.com/a/standing_chalkboard_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_rubber_duck_toy",
+                       "name":  "Гумова качечка",
+                       "nameEn":  "Rubber Duck Toy",
+                       "category":  "kids",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/kids/rubber_duck_toy.glb",
+                       "thumbnail":  "assets/thumbnails/free/rubber_duck_toy.png",
+                       "dimensions":  {
+                                          "w":  21,
+                                          "d":  30,
+                                          "h":  29
+                                      },
+                       "mount":  "top",
+                       "bytes":  733904,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Plat251",
+                                       "sourceUrl":  "https://polyhaven.com/a/rubber_duck_toy",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_television_01",
+                       "name":  "Телевізор ретро",
+                       "nameEn":  "Television 01",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/Television_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Television_01.png",
+                       "dimensions":  {
+                                          "w":  60,
+                                          "d":  47,
+                                          "h":  46
+                                      },
+                       "mount":  "floor",
+                       "bytes":  530228,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Gabriel Radić",
+                                       "sourceUrl":  "https://polyhaven.com/a/Television_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_television_02",
+                       "name":  "Телевізор",
+                       "nameEn":  "Television 02",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/television_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/television_02.png",
+                       "dimensions":  {
+                                          "w":  40,
+                                          "d":  35,
+                                          "h":  41
+                                      },
+                       "mount":  "top",
+                       "bytes":  1238956,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Benny Weimer",
+                                       "sourceUrl":  "https://polyhaven.com/a/television_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_gaming_console",
+                       "name":  "Ігрова консоль",
+                       "nameEn":  "Gaming Console",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/gaming_console.glb",
+                       "thumbnail":  "assets/thumbnails/free/gaming_console.png",
+                       "dimensions":  {
+                                          "w":  33,
+                                          "d":  32,
+                                          "h":  10
+                                      },
+                       "mount":  "top",
+                       "bytes":  2977600,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Sean Buckley",
+                                       "sourceUrl":  "https://polyhaven.com/a/gaming_console",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_boombox",
+                       "name":  "Магнітола",
+                       "nameEn":  "Boombox",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/boombox.glb",
+                       "thumbnail":  "assets/thumbnails/free/boombox.png",
+                       "dimensions":  {
+                                          "w":  72,
+                                          "d":  19,
+                                          "h":  47
+                                      },
+                       "mount":  "top",
+                       "bytes":  3066608,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Thomas Paul Mouilleron",
+                                       "sourceUrl":  "https://polyhaven.com/a/boombox",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ceiling_fan",
+                       "name":  "Стельовий вентилятор",
+                       "nameEn":  "Ceiling Fan",
+                       "category":  "tech",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/appliances/ceiling_fan.glb",
+                       "thumbnail":  "assets/thumbnails/free/ceiling_fan.png",
+                       "dimensions":  {
+                                          "w":  146,
+                                          "d":  146,
+                                          "h":  52
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  1870740,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/ceiling_fan",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_painted_wooden_bench",
+                       "name":  "Лава дерев\u0027яна",
+                       "nameEn":  "Painted Wooden Bench",
+                       "category":  "hall",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/hallway/painted_wooden_bench.glb",
+                       "thumbnail":  "assets/thumbnails/free/painted_wooden_bench.png",
+                       "dimensions":  {
+                                          "w":  116,
+                                          "d":  50,
+                                          "h":  89
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1988600,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/painted_wooden_bench",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ornate_mirror_01",
+                       "name":  "Дзеркало в рамі",
+                       "nameEn":  "Ornate Mirror 01",
+                       "category":  "hall",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/hallway/ornate_mirror_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/ornate_mirror_01.png",
+                       "dimensions":  {
+                                          "w":  49,
+                                          "d":  3,
+                                          "h":  74
+                                      },
+                       "mount":  "wall",
+                       "bytes":  676260,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/ornate_mirror_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  110
+                   },
+                   {
+                       "id":  "ph_vintage_suitcase",
+                       "name":  "Валіза вінтажна",
+                       "nameEn":  "Vintage Suitcase",
+                       "category":  "hall",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/hallway/vintage_suitcase.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_suitcase.png",
+                       "dimensions":  {
+                                          "w":  161,
+                                          "d":  24,
+                                          "h":  57
+                                      },
+                       "mount":  "floor",
+                       "bytes":  4288588,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Maximilian Schuster",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_suitcase",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ceramic_vase_01",
+                       "name":  "Ваза керамічна",
+                       "nameEn":  "Ceramic Vase 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/ceramic_vase_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/ceramic_vase_01.png",
+                       "dimensions":  {
+                                          "w":  20,
+                                          "d":  21,
+                                          "h":  40
+                                      },
+                       "mount":  "top",
+                       "bytes":  417476,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/ceramic_vase_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ceramic_vase_02",
+                       "name":  "Ваза керамічна 2",
+                       "nameEn":  "Ceramic Vase 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/ceramic_vase_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/ceramic_vase_02.png",
+                       "dimensions":  {
+                                          "w":  22,
+                                          "d":  22,
+                                          "h":  31
+                                      },
+                       "mount":  "top",
+                       "bytes":  749176,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/ceramic_vase_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ceramic_vase_03",
+                       "name":  "Ваза керамічна 3",
+                       "nameEn":  "Ceramic Vase 03",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/ceramic_vase_03.glb",
+                       "thumbnail":  "assets/thumbnails/free/ceramic_vase_03.png",
+                       "dimensions":  {
+                                          "w":  11,
+                                          "d":  11,
+                                          "h":  41
+                                      },
+                       "mount":  "top",
+                       "bytes":  764180,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/ceramic_vase_03",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_ceramic_vase_04",
+                       "name":  "Ваза керамічна 4",
+                       "nameEn":  "Ceramic Vase 04",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/ceramic_vase_04.glb",
+                       "thumbnail":  "assets/thumbnails/free/ceramic_vase_04.png",
+                       "dimensions":  {
+                                          "w":  18,
+                                          "d":  18,
+                                          "h":  34
+                                      },
+                       "mount":  "top",
+                       "bytes":  595064,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/ceramic_vase_04",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_antique_ceramic_vase_01",
+                       "name":  "Ваза антикварна",
+                       "nameEn":  "Antique Ceramic Vase 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/antique_ceramic_vase_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/antique_ceramic_vase_01.png",
+                       "dimensions":  {
+                                          "w":  26,
+                                          "d":  26,
+                                          "h":  44
+                                      },
+                       "mount":  "top",
+                       "bytes":  524936,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/antique_ceramic_vase_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_brass_vase_01",
+                       "name":  "Ваза латунна",
+                       "nameEn":  "Brass Vase 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/brass_vase_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/brass_vase_01.png",
+                       "dimensions":  {
+                                          "w":  23,
+                                          "d":  23,
+                                          "h":  69
+                                      },
+                       "mount":  "top",
+                       "bytes":  841260,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/brass_vase_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_book_encyclopedia_set_01",
+                       "name":  "Енциклопедія",
+                       "nameEn":  "Book Encyclopedia Set 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/book_encyclopedia_set_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/book_encyclopedia_set_01.png",
+                       "dimensions":  {
+                                          "w":  55,
+                                          "d":  16,
+                                          "h":  24
+                                      },
+                       "mount":  "top",
+                       "bytes":  3238308,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "John Malcolm",
+                                       "sourceUrl":  "https://polyhaven.com/a/book_encyclopedia_set_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_standing_picture_frame_01",
+                       "name":  "Фоторамка",
+                       "nameEn":  "Standing Picture Frame 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/standing_picture_frame_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/standing_picture_frame_01.png",
+                       "dimensions":  {
+                                          "w":  20,
+                                          "d":  10,
+                                          "h":  25
+                                      },
+                       "mount":  "top",
+                       "bytes":  683536,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/standing_picture_frame_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "orient":  -90
+                   },
+                   {
+                       "id":  "ph_standing_picture_frame_02",
+                       "name":  "Фоторамка 2",
+                       "nameEn":  "Standing Picture Frame 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/standing_picture_frame_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/standing_picture_frame_02.png",
+                       "dimensions":  {
+                                          "w":  22,
+                                          "d":  10,
+                                          "h":  27
+                                      },
+                       "mount":  "top",
+                       "bytes":  897964,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/standing_picture_frame_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "orient":  -90
+                   },
+                   {
+                       "id":  "ph_fancy_picture_frame_01",
+                       "name":  "Картина в рамі",
+                       "nameEn":  "Fancy Picture Frame 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/fancy_picture_frame_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/fancy_picture_frame_01.png",
+                       "dimensions":  {
+                                          "w":  60,
+                                          "d":  2,
+                                          "h":  46
+                                      },
+                       "mount":  "wall",
+                       "bytes":  739640,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rob Tuytel, Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/fancy_picture_frame_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  130
+                   },
+                   {
+                       "id":  "ph_fancy_picture_frame_02",
+                       "name":  "Картина в рамі 2",
+                       "nameEn":  "Fancy Picture Frame 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/fancy_picture_frame_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/fancy_picture_frame_02.png",
+                       "dimensions":  {
+                                          "w":  66,
+                                          "d":  9,
+                                          "h":  77
+                                      },
+                       "mount":  "wall",
+                       "bytes":  1726260,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rob Tuytel, Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/fancy_picture_frame_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  130
+                   },
+                   {
+                       "id":  "ph_hanging_picture_frame_01",
+                       "name":  "Картина",
+                       "nameEn":  "Hanging Picture Frame 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/hanging_picture_frame_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/hanging_picture_frame_01.png",
+                       "dimensions":  {
+                                          "w":  59,
+                                          "d":  2,
+                                          "h":  84
+                                      },
+                       "mount":  "wall",
+                       "bytes":  483420,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/hanging_picture_frame_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  130
+                   },
+                   {
+                       "id":  "ph_hanging_picture_frame_02",
+                       "name":  "Картина 2",
+                       "nameEn":  "Hanging Picture Frame 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/hanging_picture_frame_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/hanging_picture_frame_02.png",
+                       "dimensions":  {
+                                          "w":  75,
+                                          "d":  3,
+                                          "h":  50
+                                      },
+                       "mount":  "wall",
+                       "bytes":  693588,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/hanging_picture_frame_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  130
+                   },
+                   {
+                       "id":  "ph_hanging_picture_frame_03",
+                       "name":  "Картина 3",
+                       "nameEn":  "Hanging Picture Frame 03",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/hanging_picture_frame_03.glb",
+                       "thumbnail":  "assets/thumbnails/free/hanging_picture_frame_03.png",
+                       "dimensions":  {
+                                          "w":  39,
+                                          "d":  3,
+                                          "h":  50
+                                      },
+                       "mount":  "wall",
+                       "bytes":  1369832,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/hanging_picture_frame_03",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  130
+                   },
+                   {
+                       "id":  "ph_wall_clock",
+                       "name":  "Настінний годинник",
+                       "nameEn":  "Wall Clock",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/wall_clock.glb",
+                       "thumbnail":  "assets/thumbnails/free/wall_clock.png",
+                       "dimensions":  {
+                                          "w":  32,
+                                          "d":  5,
+                                          "h":  32
+                                      },
+                       "mount":  "wall",
+                       "bytes":  1561340,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "PierreB3D",
+                                       "sourceUrl":  "https://polyhaven.com/a/wall_clock",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  170
+                   },
+                   {
+                       "id":  "ph_wicker_basket_01",
+                       "name":  "Плетений кошик",
+                       "nameEn":  "Wicker Basket 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/wicker_basket_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/wicker_basket_01.png",
+                       "dimensions":  {
+                                          "w":  38,
+                                          "d":  30,
+                                          "h":  12
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2729144,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/wicker_basket_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_wicker_basket_02",
+                       "name":  "Плетений кошик 2",
+                       "nameEn":  "Wicker Basket 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/wicker_basket_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/wicker_basket_02.png",
+                       "dimensions":  {
+                                          "w":  37,
+                                          "d":  27,
+                                          "h":  22
+                                      },
+                       "mount":  "floor",
+                       "bytes":  3062804,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/wicker_basket_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_carved_wooden_elephant",
+                       "name":  "Слон дерев\u0027яний",
+                       "nameEn":  "Carved Wooden Elephant",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/carved_wooden_elephant.glb",
+                       "thumbnail":  "assets/thumbnails/free/carved_wooden_elephant.png",
+                       "dimensions":  {
+                                          "w":  11,
+                                          "d":  6,
+                                          "h":  10
+                                      },
+                       "mount":  "top",
+                       "bytes":  1862912,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Greg Zaal",
+                                       "sourceUrl":  "https://polyhaven.com/a/carved_wooden_elephant",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_potted_plant_01",
+                       "name":  "Рослина в горщику",
+                       "nameEn":  "Potted Plant 01",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/potted_plant_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/potted_plant_01.png",
+                       "dimensions":  {
+                                          "w":  59,
+                                          "d":  64,
+                                          "h":  135
+                                      },
+                       "mount":  "floor",
+                       "bytes":  6322096,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/potted_plant_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_potted_plant_02",
+                       "name":  "Рослина в горщику 2",
+                       "nameEn":  "Potted Plant 02",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/potted_plant_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/potted_plant_02.png",
+                       "dimensions":  {
+                                          "w":  70,
+                                          "d":  66,
+                                          "h":  84
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2632208,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Rico Cilliers",
+                                       "sourceUrl":  "https://polyhaven.com/a/potted_plant_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_potted_plant_04",
+                       "name":  "Рослина в горщику 3",
+                       "nameEn":  "Potted Plant 04",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/potted_plant_04.glb",
+                       "thumbnail":  "assets/thumbnails/free/potted_plant_04.png",
+                       "dimensions":  {
+                                          "w":  17,
+                                          "d":  19,
+                                          "h":  27
+                                      },
+                       "mount":  "floor",
+                       "bytes":  2119832,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/potted_plant_04",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_planter_pot_clay",
+                       "name":  "Глиняний вазон",
+                       "nameEn":  "Planter Pot Clay",
+                       "category":  "decor",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/decor/planter_pot_clay.glb",
+                       "thumbnail":  "assets/thumbnails/free/planter_pot_clay.png",
+                       "dimensions":  {
+                                          "w":  27,
+                                          "d":  26,
+                                          "h":  22
+                                      },
+                       "mount":  "floor",
+                       "bytes":  1796136,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Amal Kumar",
+                                       "sourceUrl":  "https://polyhaven.com/a/planter_pot_clay",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chandelier_01",
+                       "name":  "Люстра класична",
+                       "nameEn":  "Chandelier 01",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/Chandelier_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/Chandelier_01.png",
+                       "dimensions":  {
+                                          "w":  75,
+                                          "d":  82,
+                                          "h":  80
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  1304620,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/Chandelier_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chandelier_02",
+                       "name":  "Люстра",
+                       "nameEn":  "Chandelier 02",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/Chandelier_02.glb",
+                       "thumbnail":  "assets/thumbnails/free/Chandelier_02.png",
+                       "dimensions":  {
+                                          "w":  68,
+                                          "d":  62,
+                                          "h":  85
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  1180472,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/Chandelier_02",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_chandelier_03",
+                       "name":  "Люстра кришталева",
+                       "nameEn":  "Chandelier 03",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/Chandelier_03.glb",
+                       "thumbnail":  "assets/thumbnails/free/Chandelier_03.png",
+                       "dimensions":  {
+                                          "w":  78,
+                                          "d":  79,
+                                          "h":  104
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  1362212,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kirill Sannikov",
+                                       "sourceUrl":  "https://polyhaven.com/a/Chandelier_03",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_modern_ceiling_lamp_01",
+                       "name":  "Стельовий світильник",
+                       "nameEn":  "Modern Ceiling Lamp 01",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/modern_ceiling_lamp_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/modern_ceiling_lamp_01.png",
+                       "dimensions":  {
+                                          "w":  43,
+                                          "d":  43,
+                                          "h":  95
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  433620,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/modern_ceiling_lamp_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_hanging_industrial_lamp",
+                       "name":  "Підвіс лофт",
+                       "nameEn":  "Hanging Industrial Lamp",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/hanging_industrial_lamp.glb",
+                       "thumbnail":  "assets/thumbnails/free/hanging_industrial_lamp.png",
+                       "dimensions":  {
+                                          "w":  55,
+                                          "d":  55,
+                                          "h":  136
+                                      },
+                       "mount":  "ceiling",
+                       "bytes":  3241672,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Kuutti Siitonen",
+                                       "sourceUrl":  "https://polyhaven.com/a/hanging_industrial_lamp",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_industrial_wall_sconce",
+                       "name":  "Бра лофт",
+                       "nameEn":  "Industrial Wall Sconce",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/industrial_wall_sconce.glb",
+                       "thumbnail":  "assets/thumbnails/free/industrial_wall_sconce.png",
+                       "dimensions":  {
+                                          "w":  15,
+                                          "d":  25,
+                                          "h":  34
+                                      },
+                       "mount":  "wall",
+                       "bytes":  2385040,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Ulan Cabanilla",
+                                       "sourceUrl":  "https://polyhaven.com/a/industrial_wall_sconce",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1,
+                       "elev":  170
+                   },
+                   {
+                       "id":  "ph_wooden_lantern_01",
+                       "name":  "Ліхтар дерев\u0027яний",
+                       "nameEn":  "Wooden Lantern 01",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/wooden_lantern_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/wooden_lantern_01.png",
+                       "dimensions":  {
+                                          "w":  22,
+                                          "d":  23,
+                                          "h":  53
+                                      },
+                       "mount":  "top",
+                       "bytes":  3765136,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "James Ray Cock",
+                                       "sourceUrl":  "https://polyhaven.com/a/wooden_lantern_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_vintage_oil_lamp",
+                       "name":  "Лампа гасова",
+                       "nameEn":  "Vintage Oil Lamp",
+                       "category":  "light",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/lighting/vintage_oil_lamp.glb",
+                       "thumbnail":  "assets/thumbnails/free/vintage_oil_lamp.png",
+                       "dimensions":  {
+                                          "w":  22,
+                                          "d":  22,
+                                          "h":  80
+                                      },
+                       "mount":  "top",
+                       "bytes":  2159576,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Monsta3D",
+                                       "sourceUrl":  "https://polyhaven.com/a/vintage_oil_lamp",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   },
+                   {
+                       "id":  "ph_throw_pillows_01",
+                       "name":  "Декоративні подушки",
+                       "nameEn":  "Throw Pillows 01",
+                       "category":  "textile",
+                       "source":  "local",
+                       "tier":  "free",
+                       "format":  "glb",
+                       "model":  "assets/models/free/textiles/throw_pillows_01.glb",
+                       "thumbnail":  "assets/thumbnails/free/throw_pillows_01.png",
+                       "dimensions":  {
+                                          "w":  102,
+                                          "d":  63,
+                                          "h":  45
+                                      },
+                       "mount":  "top",
+                       "bytes":  1192668,
+                       "license":  {
+                                       "name":  "CC0 1.0",
+                                       "url":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                       "author":  "Serhii Khromov",
+                                       "sourceUrl":  "https://polyhaven.com/a/throw_pillows_01",
+                                       "commercial":  true,
+                                       "attributionRequired":  false
+                                   },
+                       "version":  1
+                   }
+               ]
+}
