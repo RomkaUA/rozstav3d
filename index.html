@@ -2415,6 +2415,8 @@ function setView(v) {
   } else {
     camera.fov = 42; controls.target.set(0, 0.5, 0); camera.position.set(W * 0.55, m * 0.95 + 1.2, L * 0.55 + m * 0.75);
   }
+  // вигляд зверху не обертається, тому один палець там пересуває план
+  controls.touches.ONE = v === "top" ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE;
   camera.updateProjectionMatrix(); controls.update();
   if (ceilingMesh) ceilingMesh.visible = v === "eye";
 }
@@ -2498,7 +2500,17 @@ function hoverAt(e) {
 }
 window.addEventListener("pointerdown", e => { lastPointerType = e.pointerType || "mouse"; }, true);
 canvas.addEventListener("contextmenu", e => e.preventDefault());
+// Дотик: другий палець завжди керує камерою. Незавершене перетягування предмета скасовується, і предмет повертається на місце.
+const touchIds = new Set();
+function cancelDrag() {
+  if (!drag) return; const it = getItem(drag.uid);
+  if (it && drag.x0 != null) { it.x = drag.x0; it.z = drag.z0; placeMesh(it); if (selHelper) selHelper.update(); refreshAnalysis(); renderSelPos(); }
+  drag = null; controls.enabled = true; pad.visible = false; canvas.style.cursor = "";
+}
+canvas.addEventListener("pointerdown", e => { if (e.pointerType !== "touch") return; touchIds.add(e.pointerId); if (touchIds.size >= 2) { cancelDrag(); down = null; } }, true);
+for (const t of ["pointerup", "pointercancel"]) window.addEventListener(t, e => { touchIds.delete(e.pointerId); if (t === "pointercancel" && e.pointerType === "touch") cancelDrag(); }, true);
 canvas.addEventListener("pointerdown", e => {
+  if (e.pointerType === "touch" && touchIds.size >= 2) return;
   down = { x: e.clientX, y: e.clientY }; setNdc(e);
   if (placing) {
     const it = getItem(placing.uid);
@@ -2508,17 +2520,21 @@ canvas.addEventListener("pointerdown", e => {
   }
   const p = pickItem();
   if (p) {
-    const it = p.it; select(it.uid);
+    const it = p.it;
+    // на сенсорному екрані рухається лише вже вибраний предмет; інакше палець обертає сцену, а дотик вибирає предмет при відпусканні
+    if (e.pointerType === "touch" && selected !== it.uid) return;
+    select(it.uid);
     if (e.button === 2) { controls.enabled = false; rightRot = true; rotateItem(it.uid, 90); return; }
     if (e.button !== 0) return;
     // тягнемо в площині на висоті предмета, щоб декор не «стрибав»
     const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -elevFor(it) / 100);
-    if (ray.ray.intersectPlane(plane, hitP)) { drag = { uid: it.uid, plane, ox: hitP.x * 100 - it.x, oz: hitP.z * 100 - it.z, moved: false }; controls.enabled = false; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing"; }
+    if (ray.ray.intersectPlane(plane, hitP)) { drag = { uid: it.uid, plane, ox: hitP.x * 100 - it.x, oz: hitP.z * 100 - it.z, moved: false, x0: it.x, z0: it.z, sx: e.clientX, sy: e.clientY }; controls.enabled = false; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = "grabbing"; }
   }
 });
 canvas.addEventListener("pointermove", e => {
   if (placing) { setNdc(e); movePointerTo(getItem(placing.uid), e); if (selHelper) selHelper.update(); refreshAnalysis(); return; }
   if (!drag) { hoverAt(e); return; }
+  if (e.pointerType === "touch" && !drag.moved && Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) < 8) return;   // тремтіння пальця — ще не перетягування
   setNdc(e);
   const it = getItem(drag.uid), top = byId[it.id].mount === "top";
   if (!movePointerTo(it, e, top ? 0 : drag.ox, top ? 0 : drag.oz)) return;
@@ -2529,7 +2545,9 @@ canvas.addEventListener("pointerup", e => {
   if (rightRot) { rightRot = false; controls.enabled = !placing; return; }
   if (drag) { controls.enabled = true; pad.visible = false; canvas.style.cursor = ""; if (drag.moved) { changed(); renderSel(); } drag = null; return; }
   if (!placing && down && e.button === 0 && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 5) {
-    select(null); setNdc(e); const p = pickPart();
+    select(null); setNdc(e);
+    if (e.pointerType === "touch") { const q = pickItem(); if (q) { select(q.it.uid); return; } }
+    const p = pickPart();
     if (p && (p.kind !== "floor" && p.kind !== "zone" || ui.insp === "fin")) selectPart(p);
   }
 });

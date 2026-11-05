@@ -25,8 +25,22 @@
     click.call(this);
   };
 
-  // Щипок по сторінці не повинен збільшувати весь інтерфейс: у 3D-сцені та на плані щипок масштабує вміст.
-  document.addEventListener("gesturestart", e => e.preventDefault(), { passive: false });
+  // Щипок по сцені чи плану масштабує вміст, а не сторінку. Поза ними звичайне збільшення сторінки лишається.
+  document.addEventListener("gesturestart", e => { if (e.target && e.target.tagName === "CANVAS") e.preventDefault(); }, { passive: false });
+
+  // Телефон: сцена перехоплює свайпи, тому гортання має окреме місце, а розділи доступні знизу одним дотиком.
+  addEventListener("DOMContentLoaded", () => {
+    const stage = document.querySelector(".stage"); if (!stage) return;
+    const strip = document.createElement("div"); strip.className = "stage-scroll"; strip.setAttribute("aria-hidden", "true"); strip.textContent = "Тут можна гортати сторінку";
+    stage.after(strip);
+    const nav = document.createElement("nav"); nav.className = "m-nav"; nav.setAttribute("aria-label", "Розділи");
+    for (const [k, t] of [["stage", "Сцена"], ["gallery", "Бібліотека"], ["inspector", "Властивості"]]) {
+      const b = document.createElement("button"); b.type = "button"; b.dataset.go = k; b.textContent = t;
+      b.onclick = () => { const el = document.querySelector("." + k); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); };
+      nav.appendChild(b);
+    }
+    document.body.appendChild(nav);
+  });
 
   // Просимо систему не очищати збережені дані. Система може відмовити, тож файл проєкту все одно варто зберігати.
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {}); } catch (e) {}

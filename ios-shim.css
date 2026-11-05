@@ -32,6 +32,17 @@ body { -webkit-tap-highlight-color: transparent; }
   .pw-foot .meter { display: none; }
   .pw-foot #pwStatus { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
+/* Телефон: нижня панель розділів і смуга для гортання під сценою. */
+.m-nav, .stage-scroll { display: none; }
+@media (max-width: 900px) and (pointer: coarse) {
+  .m-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--panel); border-top: 1px solid var(--line); }
+  .m-nav button { min-height: 40px; border: 1px solid var(--line); border-radius: var(--r-s); background: var(--sunk); color: var(--ink); font-size: var(--fs-s); }
+  body { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  .stage-scroll { display: flex; align-items: center; justify-content: center; order: 1; min-height: 40px; color: var(--muted); font-size: var(--fs-xs); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+}
+@media (max-width: 950px) and (max-height: 500px) and (pointer: coarse) {
+  .stage { height: calc(100dvh - 104px); min-height: 200px; }
+}
 /* На вузькому телефоні дві плаваючі панелі сцени не вміщуються в один рядок. */
 @media (max-width: 560px) {
   .stage .ov.tr { top: 52px; }
