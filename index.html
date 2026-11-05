@@ -3837,6 +3837,7 @@ function makeLocalSample() {
   return s;
 }
 (async () => {
+  await null;   // далі код викликає функції, що залежать від констант нижче за текстом: чекаємо кінця виконання всього скрипта
   if (window.claude && typeof window.claude.use === "function") {
     try { downloadsApi = await window.claude.use("downloads"); } catch (e) {}
     try { sample = await window.claude.use("sample"); } catch (e) { sample = null; }
