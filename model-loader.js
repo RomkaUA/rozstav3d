@@ -61,6 +61,7 @@ function toItem(e) {
   const clear = e.clear || g.clear; if (clear) it.clear = clear;
   if (e.tuck != null ? e.tuck : g.tuck) it.tuck = true;
   if (e.surface != null) it.surface = e.surface; else if (g.surface) it.surface = Math.round(h * g.surface);
+  if (e.own) it.own = true;
   if (e.category === "light" || e.lamp) { it.lamp = true; it.lampType = LAMP_OF[e.mount || "floor"]; }
   return it;
 }

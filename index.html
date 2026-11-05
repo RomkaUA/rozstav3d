@@ -593,6 +593,7 @@ kbd { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); bord
         <button data-a="rotR" data-tip="Повернути праворуч · R" aria-label="Повернути праворуч"><svg class="ic"><use href="#i-rotr"/></svg></button>
         <button data-a="move" data-tip="Підняти й переставити · M"><svg class="ic"><use href="#i-move"/></svg>Перемістити</button>
         <button data-a="dup" data-tip="Копія · Ctrl+D"><svg class="ic"><use href="#i-copy"/></svg>Копія</button>
+        <button data-a="size" data-tip="Змінити розмір" aria-label="Змінити розмір"><svg class="ic"><use href="#t-dims"/></svg></button>
         <button data-a="color" data-tip="Колір тканини"><svg class="ic"><use href="#i-palette"/></svg>Колір</button>
         <button data-a="del" class="del" data-tip="Видалити · Del" aria-label="Видалити"><svg class="ic"><use href="#i-trash"/></svg></button>
       </div>
@@ -929,6 +930,15 @@ kbd { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); bord
 "use strict";
 const LIB = window.ROZSTAV_LIBRARY;
 const byId = Object.fromEntries(LIB.items.map(i => [i.id, i]));
+// Предмет зі зміненим розміром: окремий опис із id «база@ШxГxВ» (см). Усе, що читає габарити (зіткнення, ергономіка, 3D, експорт), працює без змін.
+const SIZE_RE = /^(.+)@(\d+)x(\d+)x(\d+)$/;
+function sizedDef(id) {
+  if (byId[id] && !byId[id].missing) return byId[id];
+  const m = SIZE_RE.exec(id), base = m && byId[m[1]]; if (!base || base.missing) return byId[id] || null;
+  const d = Object.assign({}, base, { id, w: +m[2], d: +m[3], h: +m[4], baseId: m[1] });
+  if (base.surface != null) d.surface = Math.round(base.surface * d.h / (base.h || 1));
+  return byId[id] = d;
+}
 
 // ---------- плани ----------
 const PLANS = {
@@ -963,6 +973,44 @@ const STORE_KEY = "rozstav.v2";
 // Windows-програма (Electron): проєкти зберігає головний процес у файлах профілю, ліцензію перевіряє теж він.
 // У вебверсії цього об'єкта немає, і все працює через localStorage, як раніше.
 const DESK = window.rozstavDesktop || null;
+// Власні моделі: у програмі — файли на диску; у браузері — сховище цього браузера (IndexedDB). Той самий набір дій і ті самі перевірки файлу.
+function webMyModels() {
+  if (!window.indexedDB) return null;
+  const MAX = 60 * 1024 * 1024, urls = new Map();
+  const open = () => new Promise((ok, no) => { const r = indexedDB.open("rozstav-my", 1); r.onupgradeneeded = () => r.result.createObjectStore("models", { keyPath: "id" }); r.onsuccess = () => ok(r.result); r.onerror = () => no(r.error); });
+  const tx = async (mode, f) => { const db = await open(); return new Promise((ok, no) => { const t = db.transaction("models", mode), q = f(t.objectStore("models")); t.oncomplete = () => { db.close(); ok(q && q.result); }; t.onerror = t.onabort = () => { db.close(); no(t.error || new Error("Не вдалося записати в сховище браузера")); }; }); };
+  const urlOf = r => { if (!urls.has(r.id)) urls.set(r.id, URL.createObjectURL(new Blob([r.data], { type: "model/gltf-binary" }))); return urls.get(r.id); };
+  const entry = r => ({ id: r.id, name: r.name, nameEn: r.name, category: r.category, source: "local", tier: "free", format: "glb", model: urlOf(r), thumbnail: r.thumb || null, dimensions: r.dimensions || null, mount: r.mount || "floor", license: { name: "Власна модель", author: "ви", sourceUrl: "" }, own: true, version: 1, ready: !!r.dimensions, bytes: r.bytes, added: r.added, typeId: r.typeId || null });
+  const check = (b, size) => { const v = new DataView(b); if (b.byteLength < 20 || String.fromCharCode(v.getUint8(0), v.getUint8(1), v.getUint8(2), v.getUint8(3)) !== "glTF") return "це не файл GLB. Збережіть модель у форматі .glb (glTF Binary)"; if (v.getUint32(4, true) !== 2) return "підтримується лише glTF 2.0"; if (v.getUint32(8, true) !== size) return "файл пошкоджено"; if (v.getUint32(16, true) !== 0x4e4f534a) return "файл пошкоджено"; return null; };
+  const hashId = async b => { if (crypto.subtle) { const h = new Uint8Array(await crypto.subtle.digest("SHA-256", b)); return "my_" + [...h.slice(0, 8)].map(x => x.toString(16).padStart(2, "0")).join(""); } return "my_" + [...crypto.getRandomValues(new Uint8Array(8))].map(x => x.toString(16).padStart(2, "0")).join(""); };
+  return {
+    list: async () => (await tx("readonly", s => s.getAll())).sort((a, b) => String(b.added).localeCompare(String(a.added))).map(entry),
+    // вікно вибору файлу відкриваємо одразу: браузер дозволяє це лише в обробнику натискання
+    importFile: () => new Promise(done => {
+      const inp = document.createElement("input"); inp.type = "file"; inp.multiple = true;
+      if (!matchMedia("(pointer: coarse)").matches) inp.accept = ".glb,model/gltf-binary";   // телефони не знають цього розширення й не дають вибрати файл
+      inp.oncancel = () => done({ ok: false, items: [] });
+      inp.onchange = async () => {
+        const items = [], errors = [];
+        for (const f of [...inp.files].slice(0, 20)) {
+          try {
+            if (f.size > MAX) { errors.push(f.name + ": більше 60 МБ"); continue; }
+            const b = await f.arrayBuffer(), bad = check(b, f.size); if (bad) { errors.push(f.name + ": " + bad); continue; }
+            const id = await hashId(b), have = await tx("readonly", s => s.get(id));
+            const rec = have || { id, name: f.name.replace(/\.glb$/i, "").replace(/[_\-]+/g, " ").trim().slice(0, 80) || "Моя модель", category: "living", mount: "floor", bytes: f.size, added: new Date().toISOString(), data: b };   // ArrayBuffer, а не Blob: Blob в IndexedDB підтримується не всюди
+            if (!have) await tx("readwrite", s => s.put(rec));
+            items.push(entry(rec));
+          } catch (e) { errors.push(f.name + ": " + (e.message || e)); }
+        }
+        done({ ok: items.length > 0, items, errors });
+      };
+      inp.click();
+    }),
+    update: async (id, p) => { const r = await tx("readonly", s => s.get(id)); if (!r) throw new Error("Модель не знайдено"); if (p.dimensions) r.dimensions = { w: Math.round(p.dimensions.w), d: Math.round(p.dimensions.d), h: Math.round(p.dimensions.h) }; if (typeof p.thumb === "string") r.thumb = p.thumb; if (typeof p.name === "string" && p.name.trim()) r.name = p.name.trim().slice(0, 80); if (p.category) r.category = p.category; if (p.mount) r.mount = p.mount; await tx("readwrite", s => s.put(r)); return entry(r); },
+    remove: async id => { await tx("readwrite", s => s.delete(id)); if (urls.has(id)) { URL.revokeObjectURL(urls.get(id)); urls.delete(id); } return { ok: true }; }
+  };
+}
+const MYM = DESK ? DESK.myModels || null : (() => { try { return webMyModels(); } catch (e) { return null; } })();
 let projectId = null, projectName = "", deskInit = null;
 let uidSeq = 1;
 const sampleState = () => ({
@@ -1011,7 +1059,7 @@ function normalizeLoaded(s) {
     if (s && s.room && Array.isArray(s.items)) {
       // предмет із GLB-каталогу, який ще не завантажився або недоступний: тримаємо його «коробкою» потрібного розміру,
       // щоб проєкт не губив речі, коли каталог чи сервер моделей не відповідає
-      s.items = s.items.filter(i => byId[i.id] || (i.snap && registerMissing(i.id, i.snap)));
+      s.items = s.items.filter(i => sizedDef(i.id) || (i.snap && registerMissing(i.id, i.snap)));
       // розміри з файлу (імпорт, чужий проєкт) обмежуємо тими самими межами, що й поля введення: інакше
       // кімната на 10 км чи від'ємна висота вішають сцену. Викликається до оголошення WALLS, тому межі тут власні.
       const n = (v, lo, hi, d) => Number.isFinite(+v) && v !== null && v !== "" ? Math.max(lo, Math.min(hi, Math.round(+v))) : d, r = s.room;
@@ -2234,6 +2282,14 @@ function applyLight() {
 // ---------- предмети ----------
 const meshes = new Map();
 function footprintSize(it) { const D = byId[it.id]; const r = ((it.rot % 360) + 360) % 360; return r % 180 === 0 ? [D.w, D.d] : [D.d, D.w]; }
+let sizeLock = false;
+function setItemSize(it, n) {
+  const D = byId[it.id], baseId = D.baseId || it.id, B = byId[baseId];
+  if (D.missing) return toast("Опис цієї моделі зараз недоступний: розмір зміниться, коли вона завантажиться");
+  const v = k => Math.max(2, Math.min(2000, Math.round(n[k]))), w = v("w"), d = v("d"), h = v("h");
+  it.id = w === B.w && d === B.d && h === B.h ? baseId : baseId + "@" + w + "x" + d + "x" + h;
+  sizedDef(it.id); clampItem(it); buildItem(it); placeMesh(it); select(it.uid); changed();
+}
 function clampItem(it) {
   const D = byId[it.id], W = state.room.w, L = state.room.l;
   if (D.mount === "wall") {
@@ -2393,6 +2449,7 @@ function select(uid) {
   document.querySelector('#ctx [data-a="color"]').hidden = !D || !FABRIC_TYPES.has(D.type);
   // права панель контекстна: вибрано предмет — його властивості, ні — параметри кімнати
   $("insp").classList.toggle("sel-mode", !!D);
+  if (D && ui.insp === "fin") setInspTab("props");   // інакше розміри й дії предмета лишаються схованими під вкладкою оздоблення
   renderSel();
 }
 
@@ -2584,6 +2641,7 @@ $("ctx").addEventListener("click", e => {
   else if (a === "rotR") rotateItem(selected, 90);
   else if (a === "move") pickUp(selected);
   else if (a === "dup") { const d = $("dup"); if (d) d.click(); }
+  else if (a === "size") { togglePanel("r", false); setInspTab("props"); requestAnimationFrame(() => { const s = $("szW"); if (s) { s.scrollIntoView({ behavior: "smooth", block: "center" }); s.focus({ preventScroll: true }); } }); }
   else if (a === "color") { togglePanel("r", false); setInspTab("props"); requestAnimationFrame(() => { const s = $("sws") || $("selSec"); s.scrollIntoView({ behavior: "smooth", block: "center" }); }); }
   else if (a === "del") removeItem(selected);
   if (selHelper) selHelper.update();
@@ -2734,7 +2792,7 @@ function card(i) {
     + `<span class="st${i.premium ? " pro" : ""}">${i.premium ? "Premium" : "Standard"}</span>${i.mount ? `<span class="mtag">${MOUNT_TAG[i.mount]}</span>` : ""}`
     + `<button class="add" aria-label="Додати в сцену: ${esc(i.name)}" data-tip="${locked ? "Доступно в Premium" : "Додати в сцену"}">+</button>`
     + `<button class="fav" aria-pressed="${favs.has(i.id)}" aria-label="${favs.has(i.id) ? "Прибрати з вибраного" : "У вибране"}" data-tip="${favs.has(i.id) ? "Прибрати з вибраного" : "У вибране"}"><svg class="ic"><use href="#i-star"/></svg></button>`
-    + (i.own ? `<button class="fav own-del" style="left:9px;right:auto" data-tip="Прибрати модель (у кошик програми)" aria-label="Прибрати модель"><svg class="ic"><use href="#i-trash"/></svg></button>` : "");
+    + (i.own ? `<button class="fav own-del" style="left:9px;right:auto" data-tip="${DESK ? "Прибрати модель (у кошик програми)" : "Прибрати модель із цього браузера"}" aria-label="Прибрати модель"><svg class="ic"><use href="#i-trash"/></svg></button>` : "");
   return c;
 }
 // картки не перестворюються при кожному перемиканні вкладки: беремо готову, якщо її вигляд не змінився
@@ -2836,10 +2894,10 @@ function renderGrid() {
     sec("Нещодавні", s.rec, "Тут з'являться предмети, які ви ставили в кімнату.");
     // власні 3D-моделі: імпорт .glb через програму для Windows
     const h = document.createElement("div"); h.className = "lib-sec"; h.style.display = "flex"; h.style.justifyContent = "space-between"; h.style.alignItems = "center";
-    h.innerHTML = `<span>Власні моделі</span>${DESK && DESK.myModels ? `<button class="btn small" id="myAdd" data-tip="Файл .glb (glTF Binary) до 60 МБ. Розміри й категорія визначаться автоматично">+ Додати .glb</button>` : ""}`;
+    h.innerHTML = `<span>Власні моделі</span>${MYM ? `<button class="btn small" id="myAdd" data-tip="Файл .glb (glTF Binary) до 60 МБ. Розміри й категорія визначаться автоматично">+ Додати .glb</button>` : ""}`;
     frag.appendChild(h);
     const own = sortList(s.own.filter(show));
-    if (!own.length) empty(s.own.length ? "У цій категорії чи за цим пошуком власних моделей немає." : DESK && DESK.myModels ? "Додайте свою модель меблів у форматі .glb — вона з'явиться тут і працюватиме як будь-який предмет: розміщення, ергономіка, фото." : "Власні 3D-моделі можна додавати в програмі «Розстав 3D» для Windows.");
+    if (!own.length) empty(s.own.length ? "У цій категорії чи за цим пошуком власних моделей немає." : MYM ? `Додайте свою модель меблів у форматі .glb — вона з'явиться тут і працюватиме як будь-який предмет: розміщення, ергономіка, фото.${DESK ? "" : " Модель зберігається лише в цьому браузері на цьому пристрої."} Інші формати (FBX, OBJ) спершу збережіть як .glb, наприклад у безкоштовному Blender.` : "Власні 3D-моделі можна додавати в програмі «Розстав 3D» для Windows.");
     own.forEach(i => frag.appendChild(cardFor(i)));
     el.replaceChildren(frag);
     const add = $("myAdd"); if (add) add.onclick = importMyModels;
@@ -2861,7 +2919,7 @@ $("grid").addEventListener("click", e => {
   if (od) {
     const id = od.closest(".card").dataset.id;
     if (!od.dataset.armed) { od.dataset.armed = "1"; od.style.color = "var(--warn)"; od.dataset.tip = "Натисніть ще раз, щоб прибрати"; setTimeout(() => { delete od.dataset.armed; od.style.color = ""; }, 3000); return; }
-    DESK.myModels.remove(id).then(() => { myItems = myItems.filter(i => i.id !== id); favs.delete(id); cardCache.delete(id); renderGrid(); toast("Модель перенесено в кошик програми. Предмети з нею в проєктах лишаться коробками."); }).catch(err => toast(deskMsg(err)));
+    MYM.remove(id).then(() => { myItems = myItems.filter(i => i.id !== id); favs.delete(id); cardCache.delete(id); renderGrid(); toast(DESK ? "Модель перенесено в кошик програми. Предмети з нею в проєктах лишаться коробками." : "Модель прибрано з цього браузера. Предмети з нею в проєктах лишаться коробками."); }).catch(err => toast(deskMsg(err)));
     return;
   }
   const f = e.target.closest(".fav");
@@ -3022,14 +3080,16 @@ function registerDefs(items, toLib) {
     const was = byId[d.id]; byId[d.id] = d;
     if (toLib && !(was && was.glb)) LIB.items.push(d);
     if (was && was.missing) state.items.forEach(it => { if (it.id === d.id) { clampItem(it); buildItem(it); } });
+    // змінений за розміром варіант цієї моделі чекав на її опис
+    state.items.forEach(it => { if (it.id.startsWith(d.id + "@") && byId[it.id] && byId[it.id].missing) { delete byId[it.id]; if (sizedDef(it.id)) { clampItem(it); buildItem(it); } else registerMissing(it.id, d); } });
   }
 }
 // ---------- власні моделі (програма для Windows) ----------
 let myItems = [];
 async function loadMyModels() {
-  if (!DESK || !DESK.myModels || !window.RozstavModels) return;
+  if (!MYM || !window.RozstavModels) return;
   try {
-    const list = await DESK.myModels.list();
+    const list = await MYM.list();
     for (const e of list) { const it = e.ready ? e : await prepareMyModel(e); if (it) myItems.push(RozstavModels.toItem(it)); }
     registerDefs(myItems, false);
   } catch (e) { console.warn("my models", e); }
@@ -3050,13 +3110,13 @@ async function prepareMyModel(e) {
     thumbCam.near = 0.02; thumbCam.far = 50; thumbCam.updateProjectionMatrix();
     thumbScene.remove(root);
     root.traverse(o => { if (o.geometry) o.geometry.dispose(); [].concat(o.material || []).forEach(m => { for (const key in m) if (m[key] && m[key].isTexture) m[key].dispose(); m.dispose(); }); });
-    return await DESK.myModels.update(e.id, { dimensions, thumb });
+    return await MYM.update(e.id, { dimensions, thumb });
   } catch (err) { toast(`Модель «${e.name}» не вдалося відкрити: ${err.message || err}`); console.warn(err); return null; }
 }
 async function importMyModels() {
   const add = $("myAdd"); if (add) { add.disabled = true; add.textContent = "Обробляю…"; }
   try {
-    const r = await DESK.myModels.importFile();
+    const r = await MYM.importFile();
     let n = 0, last = null;
     for (const e of r.items || []) {
       if (myItems.some(i => i.id === e.id)) continue;
@@ -3092,7 +3152,7 @@ async function reviveMissing() {
   let bad = 0;
   for (const id of lost) {
     if (byId[id].source !== "remote" || !window.RozstavModels) { bad++; continue; }
-    try { registerDefs([await RozstavModels.remoteModel(id)], false); } catch (e) { bad++; }
+    const m = SIZE_RE.exec(id); try { registerDefs([await RozstavModels.remoteModel(m ? m[1] : id)], false); } catch (e) { bad++; }
   }
   if (bad) toast(bad === 1 ? "Одна модель з проєкту зараз недоступна. Вона лишилася на місці як коробка й повернеться, коли модель знову буде доступна."
     : `Моделей з проєкту, недоступних зараз: ${bad}. Вони лишилися на місці як коробки й повернуться, коли моделі знову будуть доступні.`);
@@ -3157,6 +3217,8 @@ function renderSel() {
   el.innerHTML = `<div class="sec-head"><h2>Предмет</h2><button class="btn ghost small" id="selBack" data-tip="Зняти вибір і показати кімнату · Esc"><svg class="ic"><use href="#i-room"/></svg>Кімната</button></div>
     <div><div class="sel-name">${esc(D.name)}</div><div class="mono">${D.w} × ${D.d} × ${D.h} см · ${where}${D.glb ? " · 3D-модель" : ""}</div></div>
     <div class="row"><label class="f">X, см<input id="px" type="number" step="1"></label><label class="f">Y, см<input id="pz" type="number" step="1"></label>${wall ? `<label class="f">Від підлоги<input id="pe" type="number" step="5" min="0" max="${state.room.h}"></label>` : `<label class="f">Поворот<input type="text" value="${it.rot}°" readonly tabindex="-1"></label>`}</div>
+    <div class="row"><label class="f">Ширина, см<input id="szW" type="number" min="2" max="2000" step="1"></label><label class="f">Глибина, см<input id="szD" type="number" min="2" max="2000" step="1"></label><label class="f">Висота, см<input id="szH" type="number" min="2" max="2000" step="1"></label></div>
+    <div class="actions" style="align-items:center"><label class="switch"><input id="szLock" type="checkbox"> Пропорційно</label><button class="btn small" id="szReset" hidden>Початковий розмір</button></div>
     ${sw ? `<div style="display:grid;gap:6px"><span class="note">Колір тканини</span>${sw}</div>` : ""}
     <div class="actions">
       ${wall ? "" : `<button class="btn small" id="rotL" data-tip="Shift+R"><svg class="ic"><use href="#i-rotl"/></svg>90°</button><button class="btn small" id="rotR" data-tip="R"><svg class="ic"><use href="#i-rotr"/></svg>90°</button>`}
@@ -3164,6 +3226,9 @@ function renderSel() {
     </div>`;
   $("selBack").onclick = () => select(null);
   renderSelPos();
+  for (const [fid, k] of [["szW", "w"], ["szD", "d"], ["szH", "h"]]) { const inp = $(fid); inp.value = D[k]; inp.disabled = !!D.missing; inp.onchange = () => { const v = Math.round(+inp.value); if (!(v >= 2 && v <= 2000)) { inp.value = D[k]; toast("Розмір: від 2 до 2000 см"); return; } const n = { w: D.w, d: D.d, h: D.h }; if ($("szLock").checked) { const q = v / D[k]; for (const a of ["w", "d", "h"]) n[a] = D[a] * q; } n[k] = v; setItemSize(it, n); }; }
+  $("szLock").checked = sizeLock; $("szLock").onchange = e => { sizeLock = e.target.checked; };
+  $("szReset").hidden = !D.baseId; $("szReset").onclick = () => { const B = byId[D.baseId]; setItemSize(it, { w: B.w, d: B.d, h: B.h }); };
   $("px").onchange = e => { it.x = +e.target.value || 0; clampItem(it); placeMesh(it); changed(); renderSelPos(); };
   $("pz").onchange = e => { it.z = +e.target.value || 0; clampItem(it); placeMesh(it); changed(); renderSelPos(); };
   if (wall) { $("pe").value = Math.round(elevFor(it)); $("pe").onchange = e => { it.elev = Math.max(0, Math.min(state.room.h - D.h, +e.target.value || 0)); placeMesh(it); if (selHelper) selHelper.update(); changed(); }; }
