@@ -15,6 +15,8 @@
 <script src="ios-shim.js"></script>
 </head><body>
 <title>Розстав 3D</title>
+<script src="i18n-data.js"></script>
+<script src="i18n.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
@@ -684,6 +686,7 @@ kbd { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); bord
 
 <div class="menu" id="moreMenu" role="menu" hidden>
   <button role="menuitem" id="miPlan"><svg class="ic"><use href="#i-top"/></svg>План → 3D…</button>
+  <label style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px"><span>Мова</span><select id="langSel" class="sel no-i18n" aria-label="Language"><option value="uk">Українська</option><option value="en">English</option><option value="zh">中文</option></select></label>
   <button role="menuitem" id="miDraw"><svg class="ic"><use href="#i-top"/></svg>Намалювати план вручну…</button>
   <button role="menuitem" id="miWizard"><svg class="ic"><use href="#i-room"/></svg>Нова кімната з майстром</button>
   <button role="menuitem" id="btnSample"><svg class="ic"><use href="#i-book"/></svg>Приклад: вітальня з меблями</button>
@@ -2805,7 +2808,8 @@ function cardFor(i) {
 }
 
 // ---------- що показувати: джерело → фільтри → пошук → тип ----------
-const textOf = i => `${i.name} ${i.nameEn || ""} ${TY ? TY.label(typeOf(i).key) + " " + TY.typeName(typeOf(i).ty) : ""}`.toLowerCase();
+const i18nT = s => window.I18N ? I18N.t(s) : s;   // пошук працює й мовою інтерфейсу
+const textOf = i => `${i.name} ${i18nT(i.name)} ${i.nameEn || ""} ${TY ? TY.label(typeOf(i).key) + " " + i18nT(TY.label(typeOf(i).key)) + " " + TY.typeName(typeOf(i).ty) + " " + i18nT(TY.typeName(typeOf(i).ty)) : ""}`.toLowerCase();
 function passFilters(i) {
   if (fRoom !== "all" && i.cat !== fRoom) return false;
   if (tab === "std" && kind !== "all" && (kind === "glb") !== !!i.glb) return false;
@@ -3906,7 +3910,7 @@ let aiMeta = null;
 function makeLocalSample() {
   const call = async (input, opts, json) => {
     const images = opts && opts.images ? await Promise.all([].concat(Array.from(opts.images)).map(blobToDataURL)) : [];
-    const prompt = typeof input === "string" ? input : input.map(m => m.content).join("\n\n");
+    const L = window.I18N && I18N.lang, prompt = (typeof input === "string" ? input : input.map(m => m.content).join("\n\n")) + (L === "en" ? "\n\nWrite all human-readable text of your answer in English; keep codes and JSON keys unchanged." : L === "zh" ? "\n\n请用简体中文书写回答中所有供人阅读的文字；代码和 JSON 键保持不变。" : "");
     const d = await localPost("/api/chat", { prompt, images, json, task: opts && opts.task }, opts && opts.signal);
     aiMeta = d.model ? { provider: d.provider, model: d.model, ms: d.ms, attempts: d.attempts, usage: d.usage } : null;
     return d.text || "";
@@ -5328,6 +5332,7 @@ $("pwBack").onclick = () => pwGo(Math.max(1, PW.step - 1));
 $("pwClose").onclick = pwClose;
 $("miPlan").onclick = () => { closeMenu(); pwOpen(false); };
 $("miCad").onclick = () => { closeMenu(); pwCadSave(true); };
+{ const ls = $("langSel"); if (ls && window.I18N) { ls.value = I18N.lang; ls.onchange = () => I18N.set(ls.value); } }
 $("miDraw").onclick = () => { closeMenu(); pwOpen(false); if (!$("mPlan").hidden) pwStartManual(); };
 $("vplan").onclick = () => pwOpen(isPlan());
 // ---------- експорт 3D-моделі у GLB ----------
