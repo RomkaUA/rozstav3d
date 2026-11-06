@@ -127,7 +127,7 @@
       const L = len(w) || 1, ux = (w.b[0] - w.a[0]) / L, uy = (w.b[1] - w.a[1]) / L, e = w.virtual ? Math.max(step * 1.5, 10) : w.t / 2, A = [w.a[0] - ux * e, w.a[1] - uy * e], B = [w.b[0] + ux * e, w.b[1] + uy * e], ww = { a: A, b: B };
       const bx0 = Math.max(0, Math.floor((Math.min(A[0], B[0]) - e - x0) / step)), bx1 = Math.min(W - 1, Math.ceil((Math.max(A[0], B[0]) + e - x0) / step)), by0 = Math.max(0, Math.floor((Math.min(A[1], B[1]) - e - y0) / step)), by1 = Math.min(H - 1, Math.ceil((Math.max(A[1], B[1]) + e - y0) / step));
       // межа без стіни — окремий бар'єр для пошуку приміщень (у масці стін вона була б «надто тонкою» й зникла б)
-      for (let Y = by0; Y <= by1; Y++) for (let X = bx0; X <= bx1; X++) if (distToSeg([X * step + x0, Y * step + y0], ww) <= e) { if (w.virtual) vb[Y * W + X] = 1; else g[Y * W + X] = 10; }
+      for (let Y = by0; Y <= by1; Y++) for (let X = bx0; X <= bx1; X++) if (distToSeg([X * step + x0, Y * step + y0], ww) <= e) { vb[Y * W + X] = 1; if (!w.virtual) g[Y * W + X] = 10; }   // стіни тут відомі точно, тож вони й бар'єр: розпізнавання з растра губить короткі сегменти кривих, і заливка «витікала» назовні
     }
     const det = D.detect({ w: W, h: H, gray: g }, { threshold: 128, wallPx: Math.max(2, Math.round(Math.min(...plan.walls.filter(w => !w.virtual).map(w => w.t).concat([1e9])) / step)), single: true, bands: false, barrier: vb });
     const old = plan.rooms || [], manual = old.filter(r => r.manual), voids = plan.voids || [];

@@ -32,7 +32,7 @@
     for (const p of patterns()) { if (p.lit && !masked.includes(p.lit) && !s.includes(p.lit)) continue; const m = p.re.exec(s); if (m && p.lit.length <= 4 && m.slice(1).some(a => !/^[\d\s.,:×-]*$/.test(a))) continue; if (m) return fill(D[p.k][idx], m.slice(1).map(a => CY.test(a) ? tr(a, depth + 1) : num(a))); }
     // складені написи: перекладаємо частини між роздільниками
     let best = null, bestCy = Infinity; const cyr = x => (x.match(/[А-Яа-яЇїІіЄєҐґ]/g) || []).length;
-    for (const sep of [". ", " · ", " — ", ": ", ", "]) { if (!s.includes(sep)) continue; const parts = s.split(sep), out = parts.map(p => tr(p, depth + 1)); if (!out.some((p, i) => p !== parts[i])) continue; const j = out.join(sep), c = cyr(j); if (c < bestCy) { best = j; bestCy = c; } if (!c) break; }
+    for (const sep of [". ", " · ", " — ", ": ", ", "]) { if (!s.includes(sep)) continue; const parts = s.split(sep), out = parts.map(p => { if (sep === ". " && !p.endsWith(".")) { const a = tr(p + ".", depth + 1); if (a !== p + ".") return a.replace(/[.。]$/, ""); } return tr(p, depth + 1); }); if (!out.some((p, i) => p !== parts[i])) continue; const j = out.join(sep), c = cyr(j); if (c < bestCy) { best = j; bestCy = c; } if (!c) break; }
     return best;
   }
   function tr(raw, depth = 0) {
