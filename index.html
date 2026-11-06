@@ -1142,7 +1142,13 @@ const isSolid = D => !D.mount && D.type !== "rug";
 
 // ---------- three.js ----------
 const canvas = $("cv"), stageEl = $("stage");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+// М'яке стискання світлих тонів: сума світла в редакторі перевищує 100 %, і без цього все яскравіше обрізається до білого
+// (при обертанні камери пересвічені плями «стрибають»). Тони до 60 % не змінюються, вище плавно наближаються до білого, не досягаючи його.
+THREE.ShaderChunk.tonemapping_pars_fragment = THREE.ShaderChunk.tonemapping_pars_fragment.replace(
+  "vec3 CustomToneMapping( vec3 color ) { return color; }",
+  "vec3 CustomToneMapping( vec3 color ) { color *= toneMappingExposure; const float a = 0.6; vec3 t = max( color - a, 0.0 ) / ( 1.0 - a ); return mix( color, a + ( 1.0 - a ) * t / ( 1.0 + t ), step( a, color ) ); }");
+const softTones = r => { r.toneMapping = THREE.CustomToneMapping; r.toneMappingExposure = 1; return r; };
+const renderer = softTones(new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true }));
 renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -3022,7 +3028,7 @@ function openPreview(id) {
 function pv3D(D, locked) {
   const cv = $("pvCv");
   if (!pvR) {
-    pvR = new THREE.WebGLRenderer({ canvas: cv, antialias: true }); pvR.setPixelRatio(Math.min(2, devicePixelRatio || 1)); pvR.setClearColor("#E4E6E9", 1);
+    pvR = softTones(new THREE.WebGLRenderer({ canvas: cv, antialias: true })); pvR.setPixelRatio(Math.min(2, devicePixelRatio || 1)); pvR.setClearColor("#E4E6E9", 1);
     pvScene = new THREE.Scene(); pvScene.add(new THREE.HemisphereLight(0xffffff, 0xb9b1a4, 0.7), new THREE.AmbientLight(0xffffff, 0.25));
     const l = new THREE.DirectionalLight(0xfff1de, 0.8); l.position.set(3.5, 7, 4.5); pvScene.add(l);
     pvCam = new THREE.PerspectiveCamera(32, 1, 0.01, 60);
@@ -3163,7 +3169,7 @@ async function reviveMissing() {
   refreshAnalysis(); renderStats();
 }
 
-const thumbR = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
+const thumbR = softTones(new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true }));
 thumbR.setSize(240, 180); thumbR.setPixelRatio(1);
 const thumbScene = new THREE.Scene();
 thumbScene.add(new THREE.HemisphereLight(0xffffff, 0xb9b1a4, 0.65), new THREE.AmbientLight(0xffffff, 0.2));
