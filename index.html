@@ -4301,7 +4301,9 @@ const photoMat = m => { if (!m || !(m.envMap || m.aoMap)) return m; const c = m.
 function photoJSON() {
   const root = new THREE.Scene();
   // envMap редактора (PMREM) і AO-карти у фото не потрібні: трасування рахує відбиття й затінення саме
-  const strip = o => { o.traverse(c => { c.userData = {}; if (c.isMesh) c.material = Array.isArray(c.material) ? c.material.map(photoMat) : photoMat(c.material); }); return o; };
+  // параметричні геометрії (ExtrudeGeometry підлоги тощо) у JSON зберігаються лише параметрами, і повороти, «запечені»
+  // в геометрію (rotateX), губляться: підлога стає вертикальною. Тому у фото передаємо готові вершини
+  const strip = o => { o.traverse(c => { c.userData = {}; if (c.isMesh && c.geometry && c.geometry.type !== "BufferGeometry") { const n = new THREE.BufferGeometry().copy(c.geometry); delete n.parameters; c.geometry = n; } if (c.isMesh) c.material =Array.isArray(c.material) ? c.material.map(photoMat) : photoMat(c.material); }); return o; };
   root.add(strip(floorMesh.clone()));
   if (view === "eye" && ceilingMesh) { const c = ceilingMesh.clone(); c.visible = true; root.add(strip(c)); }
   for (const w of walls) if (!w.userData.hidden) root.add(strip(w.clone(true)));
@@ -4442,9 +4444,12 @@ $("phGo").onclick = async () => {
     let warm = uiStore.get("ptWarm", false);
     await window.RozstavPhoto.render({
       canvas: $("phCv"), w: tw, h: th, json: photoJSON(), cam: photoCamera(tw, th), light, samples: total,
-      onStart: () => { phStep("trace"); },
+      onStart: () => { phStep("trace"); $("phCv").style.visibility = "hidden"; },
       onProgress: s => {
         $("phBar").style.width = Math.min(100, s / total * 100) + "%";
+        // до першого повного проходу трасувальник показує звичайний растровий кадр зі світлом для трасування: він вицвілий
+        // і перепалений. Поки так, лишаємо видимим прев'ю «Модель»
+        $("phCv").style.visibility = s >= 1 ? "" : "hidden";
         if (s < 1 && performance.now() - t0 > 2500) { phStatus(warm ? "Готую відеокарту до рендера (зазвичай кілька секунд, інколи до хвилини)…" : "Перший рендер на цьому комп'ютері: відеокарта готує програму трасування. Це може тривати 1–2 хвилини; наступні рендери зазвичай стартують значно швидше. Вікно може ненадовго не відповідати."); return; }
         if (s >= 1 && !warm) { warm = true; uiStore.set("ptWarm", true); }
         phStatus(`Рендер: ${Math.floor(s)} / ${total} проходів, шум поступово зникає`);
@@ -5763,6 +5768,38 @@ import { WebGLPathTracer, GradientEquirectTexture, DenoiseMaterial } from "three
 import { FullScreenQuad } from "three/examples/jsm/postprocessing/Pass.js";
 
 let renderer = null, pt = null, raf = 0, job = 0, running = false, denoiseQuad = null;
+// three-gpu-pathtracer 0.0.23 зливає сцену як «одна група на меш», а матеріали рахує з розгорнутих масивів. Через це
+// після першого меша з кількома матеріалами (стіни, вікна) індекси зсуваються, і предмети беруть чужі матеріали й текстури.
+// Тому перед трасуванням кожен меш має рівно один матеріал і жодних груп у геометрії
+function splitGroups(scene) {
+  const list = []; scene.traverse(x => { if (x.isMesh && x.geometry) list.push(x); });
+  const bare = g => { const n = new T.BufferGeometry(); for (const k in g.attributes) n.setAttribute(k, g.attributes[k]); if (g.index) n.setIndex(g.index); return n; };
+  for (const x of list) {
+    const g = x.geometry;
+    if (!Array.isArray(x.material)) { if (g.groups.length) x.geometry = bare(g); continue; }
+    const total = g.index ? g.index.count : g.attributes.position.count;
+    const groups = g.groups.length ? g.groups : [{ start: 0, count: total, materialIndex: 0 }];
+    const holder = new T.Group(); holder.name = x.name;
+    holder.position.copy(x.position); holder.quaternion.copy(x.quaternion); holder.scale.copy(x.scale); holder.visible = x.visible;
+    for (const gr of groups) {
+      const m = x.material[gr.materialIndex]; if (!m) continue;
+      const start = gr.start, count = Math.min(gr.count, total - start); if (!(count > 0)) continue;
+      let sub;
+      if (g.index) { sub = bare(g); sub.setIndex(new T.BufferAttribute(g.index.array.slice(start, start + count), 1)); }
+      else {
+        sub = new T.BufferGeometry();
+        for (const k in g.attributes) {
+          const a = g.attributes[k], s = a.itemSize, get = [a.getX, a.getY, a.getZ, a.getW], arr = new Float32Array(count * s);   // getX… уже повертають нормалізовані значення
+          for (let i = 0; i < count; i++) for (let j = 0; j < s; j++) arr[i * s + j] = get[j].call(a, start + i);
+          sub.setAttribute(k, new T.BufferAttribute(arr, s));
+        }
+      }
+      const part = new T.Mesh(sub, m); part.castShadow = x.castShadow; part.receiveShadow = x.receiveShadow; holder.add(part);
+    }
+    for (const c of [...x.children]) holder.add(c);
+    x.parent.add(holder); x.parent.remove(x);
+  }
+}
 // фінальне шумозаглушення поверх накопиченого кадру
 function denoise() {
   if (!pt || !renderer) return;
@@ -5822,6 +5859,7 @@ window.RozstavPhoto = {
     for (const l of L.lamps || []) {
       const pl = new T.PointLight(0xffc48a, L.lamp * l[3], 0, 2); pl.position.set(l[0], l[1], l[2]); scene.add(pl);
     }
+    splitGroups(scene);
     const cam = new T.PerspectiveCamera(o.cam.fov, o.w / o.h, 0.05, 100);
     cam.position.fromArray(o.cam.pos); cam.lookAt(new T.Vector3().fromArray(o.cam.target)); cam.updateMatrixWorld();
     scene.updateMatrixWorld(true);

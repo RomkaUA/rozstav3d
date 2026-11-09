@@ -151,7 +151,9 @@
       const cov = hit / tot; if (cov > best.cov) best = { cov, hinge, side };
     }
     if (best.cov >= 0.4) return { kind: "door", conf: Math.min(0.95, 0.4 + best.cov * 0.55), check: best.cov < 0.6, hinge: best.hinge, swing: best.side };
-    // двері без дуги: лише полотно — пряма лінія від кінця прорізу під кутом 20…80° (так позначають двері в багатьох планах ЖК)
+    // двері без дуги: лише полотно — пряма лінія від кінця прорізу під кутом 20…80° (так позначають двері в багатьох планах ЖК).
+    // 90° тут не шукаємо: під прямим кутом від краю прорізу часто йде звичайна стіна, і вікно біля кута ставало б дверима.
+    // Полотно під 90°, товсте як стіна, розпізнається окремо — за формою (коротка «стіна» з вільним кінцем біля прорізу)
     let leaf = { cov: 0 };
     for (const [hx, hinge] of [[a, "a"], [b, "b"]]) for (const side of [1, -1]) for (let deg = 20; deg <= 80; deg += 5) {
       const ang = deg * Math.PI / 180; let hit = 0, tot = 0;
@@ -404,6 +406,48 @@
       for (const b of walls) { if (b.o === a.o) continue; const d = Math.abs(a[end] - b.c); if (d <= b.t / 2 + snap && a.c >= b.s0 - snap && a.c <= b.s1 + snap && (!best || d < best.d)) best = { d, b }; }
       if (best) { a[end] = best.b.c; a.joined = (a.joined || 0) + 1; (a.jn = a.jn || {})[end] = 1; if (best.b.s0 > a.c) best.b.s0 = Math.min(best.b.s0, a.c); if (best.b.s1 < a.c) best.b.s1 = Math.max(best.b.s1, a.c); }
     }
+    // полотно дверей біля самого краю прорізу зливається з торцем простінка: перевірка «розрив перетнуто стіною» тоді не дає
+    // побачити проріз, а полотно стає перегородкою. Ознаки: коротка «стіна» одним кінцем на торці стіни b, другий кінець вільний,
+    // а далі за торцем по лінії b — розрив (до наступного шматка стіни або до кута) приблизно завдовжки як полотно
+    // вільний кінець полотна: поряд немає жодної іншої стіни (кінець справжньої стіни може впиратися в кут без позначки «з'єднано»)
+    const segDist = (b, x, y) => { const s = b.o === "h" ? [b.s0, b.c, b.s1, b.c] : [b.c, b.s0, b.c, b.s1], dx = s[2] - s[0], dy = s[3] - s[1], L2 = dx * dx + dy * dy || 1, k = Math.max(0, Math.min(1, ((x - s[0]) * dx + (y - s[1]) * dy) / L2)); return Math.hypot(s[0] + k * dx - x, s[1] + k * dy - y) - b.t / 2; };
+    // крім списку стін дивимось і на саму маску стін: біля кінця полотна в кімнаті порожньо, а кінець справжньої стіни
+    // впирається в іншу стіну (на тонких планах кут могло не з'єднати, але темні пікселі там є)
+    const freeEnd = (a, end, skip) => {
+      const x = a.o === "h" ? a[end] : a.c, y = a.o === "h" ? a.c : a[end];
+      if (walls.some(b => b !== a && b !== skip && segDist(b, x, y) <= Math.max(T, a.t) * 1.2)) return false;
+      const R = Math.round(Math.max(T, a.t)), out = end === "s1" ? 1 : -1; let n = 0;
+      for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
+        const u = a.o === "h" ? dx : dy, v = a.o === "h" ? dy : dx;
+        if (u * out <= 0 && Math.abs(v) <= a.t / 2 + 2) continue;   // тіло самого полотна
+        const X = Math.round(x + dx), Y = Math.round(y + dy); if (X >= 0 && Y >= 0 && X < w && Y < h && wmo[Y * w + X]) n++;
+      }
+      return n <= R * 0.5;
+    };
+    for (let i = walls.length - 1; i >= 0; i--) {
+      const a = walls[i]; if (!a || a.band || !a.jn || (a.jn.s0 && a.jn.s1) || a.ops.length) continue;
+      const end = a.jn.s0 ? "s0" : "s1", side = end === "s0" ? 1 : -1, L = a.s1 - a.s0;
+      if (!freeEnd(a, end === "s0" ? "s1" : "s0")) continue;
+      let res = null;
+      for (const b of walls) {
+        if (b === a || b.o === a.o || b.band || Math.abs(a[end] - b.c) > b.t / 2 + T || a.t > b.t * 1.15) continue;
+        const tip = Math.abs(b.s0 - a.c) <= Math.max(a.t, T) ? "s0" : Math.abs(b.s1 - a.c) <= Math.max(a.t, T) ? "s1" : null; if (!tip) continue;
+        const dir = tip === "s0" ? -1 : 1; let far = null;
+        for (const c of walls) { if (c === b || c === a) continue;
+          if (c.o === b.o && Math.abs(c.c - b.c) <= T * 0.6) { const ne = dir < 0 ? c.s1 : c.s0, gap = (ne - a.c) * dir; if (gap > 0 && (!far || gap < far.gap)) far = { gap, at: ne, c }; }
+          else if (c.o !== b.o && b.c >= c.s0 - c.t && b.c <= c.s1 + c.t) { const face = c.c - dir * c.t / 2, gap = (face - a.c) * dir; if (gap > 0 && (!far || gap < far.gap)) far = { gap, at: face, corner: c }; } }
+        if (far && far.gap >= T * 1.6 && far.gap <= T * 16 && L >= far.gap * 0.55 && L <= far.gap * 1.35) { res = { b, tip, far }; break; }
+      }
+      if (!res) continue;
+      const { b, tip, far } = res, o0 = Math.min(a.c, far.at), o1 = Math.max(a.c, far.at);
+      const op = { s0: o0, s1: o1, kind: "door", conf: 0.6, check: true, hinge: a.c === o0 ? "a" : "b", swing: side };
+      walls.splice(i, 1);
+      if (far.c) {   // простінок з іншого боку: одна стіна з дверним прорізом
+        const c = far.c; b.ops.push(op, ...c.ops); b.s0 = Math.min(b.s0, c.s0); b.s1 = Math.max(b.s1, c.s1); b.ops.sort((p, q) => p.s0 - q.s0);
+        b.jn = b.jn || {}; b.jn[tip] = c.jn && c.jn[tip] ? 1 : 0; b.joined = (b.jn.s0 ? 1 : 0) + (b.jn.s1 ? 1 : 0);
+        const k = walls.indexOf(c); if (k >= 0) walls.splice(k, 1);
+      } else { b.ops.push(op); b[tip] = far.corner.c; (b.jn = b.jn || {})[tip] = 1; }
+    }
     // вікно чи двері між вільним кінцем стіни й перпендикулярною стіною (простінка з іншого боку немає — проріз упирається в кут)
     for (const a of walls) for (const end of ["s0", "s1"]) {
       if (a.jn && a.jn[end]) continue;
@@ -421,6 +465,23 @@
       const bEnd = [best.b.s0, best.b.s1].some(e => Math.abs(e - a.c) <= T * 1.5);
       if (cls.kind === "opening" && !(best.gap <= T * 4 && bEnd)) continue;
       if (cls.kind !== "solid") a.ops.push(Object.assign({ s0, s1 }, cls)); a[end] = best.b.c; a.joined = (a.joined || 0) + 1; (a.jn = a.jn || {})[end] = 1;
+    }
+    // полотно дверей, намальоване відчиненим (часто під 90°), товсте настільки, що пройшло фільтр товщини: коротка «стіна»
+    // від краю дверного прорізу, завдовжки приблизно як проріз, другий кінець вільний. Це двері, а не перегородка:
+    // прибираємо її, а проріз (якщо символу не впізнали) стає дверима з петлями з цього боку
+    for (let i = walls.length - 1; i >= 0; i--) {
+      const a = walls[i], L = a.s1 - a.s0; if (a.band || !a.jn || (a.jn.s0 && a.jn.s1) || a.ops.length) continue;
+      const end = a.jn.s0 ? "s0" : "s1", side = end === "s0" ? 1 : -1;
+      if (!freeEnd(a, end === "s0" ? "s1" : "s0")) continue;
+      let hit = null;
+      for (const b of walls) { if (b === a || b.o === a.o || Math.abs(a[end] - b.c) > b.t / 2 + T) continue;
+        for (const o of b.ops) { if (o.kind !== "door" && o.kind !== "opening") continue; const ow = o.s1 - o.s0;
+          for (const [e, hinge] of [[o.s0, "a"], [o.s1, "b"]]) if (Math.abs(a.c - e) <= Math.max(a.t, T) * 1.5 && L >= ow * 0.55 && L <= ow * 1.35 && a.t <= b.t * 1.15) hit = { b, o, hinge }; } }
+      if (!hit) continue;
+      // сторона відчинення: полотно йде від стіни в бік збільшення (side = 1) чи зменшення координати
+      if (hit.o.kind === "opening") Object.assign(hit.o, { kind: "door", conf: 0.6, check: true });
+      if (!hit.o.hinge) { hit.o.hinge = hit.hinge; hit.o.swing = side; }
+      walls.splice(i, 1);
     }
     // дублікати: паралельна «стіна», що лежить упритул до іншої або накладається на неї на ≥ 50% довжини, — лінія стільниці,
     // шафи чи рами біля справжньої стіни. Одна фізична стіна має бути в даних один раз: лишаємо довшу (за рівності — товщу)
