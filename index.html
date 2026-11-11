@@ -455,6 +455,28 @@ kbd { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); bord
   header.top { flex-wrap: wrap; row-gap: 6px; padding-block: 6px; }
   .plan-pill, .vsep, .save-state, .brand b { display: none; }
 }
+/* ---------- аудит вигляду (1.0.33) ---------- */
+/* контраст дрібного тексту й білого на акценті — не нижче 4,5:1 */
+:root { --faint: #969DAD; --accent: #7357E8; }
+.pw-steps li.done b { color: #0B2417; }
+/* .dialog (760 px) оголошено пізніше за .pw і .pv, тож ці вікна лишалися вузькими: майстер плану мав 4 ряди значків і малий аркуш */
+.dialog.pw { width: min(1500px, 100%); } .dialog.pv { width: min(900px, 100%); }
+/* вузькі панелі (1280 px і менше): вміст не виходить за край, вкладки не обрізаються */
+.panel-head { grid-template-columns: minmax(0, 1fr); } .panel-head > * { min-width: 0; }
+.lib-kind { min-width: 0; } .lib-kind select { min-width: 0; flex: 1 1 auto; } #libFiltBtn { flex: none; }
+.insp-tabs, .insp-tabs .seg { min-width: 0; } .seg.full button { min-width: 0; padding: 0 6px; } #colL, #colR { flex: none; }
+/* картка: позначка лише для Premium, і вона тримається мініатюри, а не назви (назва буває у два рядки) */
+.card .th { position: relative; display: block; } .card .th .st { bottom: 5px; left: 5px; } .card .st:not(.pro) { display: none; }
+.pw-tools .pw-op input[type=number] { height: 26px; }
+/* легенда не перехоплює кліки: під нею теж можна малювати й ставити точки */
+.pw-legend { pointer-events: none; background: rgba(255,255,255,.8); }
+/* довідка «Як малювати» згортається; меню «Ще» поділено на групи */
+details.pw-box > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+details.pw-box > summary::-webkit-details-marker { display: none; }
+details.pw-box > summary::after { content: ""; width: 7px; height: 7px; margin-right: 4px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform var(--t-fast); }
+details.pw-box[open] > summary::after { transform: rotate(-135deg); }
+details.pw-box > summary h4 { margin: 0; } details.pw-box[open] > summary { margin-bottom: 6px; }
+.menu .menu-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 10px; }
 @media (prefers-reduced-motion: reduce) { *, *::before { transition: none !important; animation: none !important; } }
 </style>
 <link rel="stylesheet" href="ios-shim.css">
@@ -686,13 +708,15 @@ kbd { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); bord
 
 <div class="menu" id="moreMenu" role="menu" hidden>
   <button role="menuitem" id="miPlan"><svg class="ic"><use href="#i-top"/></svg>План → 3D…</button>
-  <label style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px"><span>Мова</span><select id="langSel" class="sel no-i18n" aria-label="Language"><option value="uk">Українська</option><option value="en">English</option><option value="zh">中文</option></select></label>
   <button role="menuitem" id="miDraw"><svg class="ic"><use href="#i-top"/></svg>Намалювати план вручну…</button>
   <button role="menuitem" id="miWizard"><svg class="ic"><use href="#i-room"/></svg>Нова кімната з майстром</button>
   <button role="menuitem" id="btnSample"><svg class="ic"><use href="#i-book"/></svg>Приклад: вітальня з меблями</button>
+  <hr>
   <button role="menuitem" id="miSettings"><svg class="ic"><use href="#i-sliders"/></svg>Налаштування<kbd>Ctrl+,</kbd></button>
   <button role="menuitem" id="miAIDiag"><svg class="ic"><use href="#i-spark"/></svg>AI та підключення</button>
   <button role="menuitem" id="miKeys"><svg class="ic"><use href="#i-kbd"/></svg>Гарячі клавіші<kbd>?</kbd></button>
+  <label class="menu-row"><span>Мова</span><select id="langSel" class="sel no-i18n" aria-label="Language"><option value="uk">Українська</option><option value="en">English</option><option value="zh">中文</option></select></label>
+  <hr>
   <button role="menuitem" id="miCad"><svg class="ic"><use href="#i-save"/></svg>Зберегти план як DWG / DXF…</button>
   <button role="menuitem" id="miGlb"><svg class="ic"><use href="#i-save"/></svg>Експорт 3D-моделі (GLB)…</button>
   <button role="menuitem" id="miFbx"><svg class="ic"><use href="#i-save"/></svg>Експорт у 3ds Max (.fbx)…</button>
@@ -2797,8 +2821,8 @@ const typeName = id => id === "all" ? "Усі моделі" : TY ? TY.typeName(i
 function card(i) {
   const locked = i.premium && !state.premium, th = thumbs[i.id] || i.thumb, t = typeOf(i);
   const c = document.createElement("div"); c.className = "card" + (locked ? " locked" : ""); c.dataset.id = i.id; c.dataset.ty = t.key;
-  c.innerHTML = `<button class="pick" data-tip="Клацніть — перегляд і категорія · перетягніть у кімнату" aria-label="Переглянути: ${esc(i.name)}">${th ? `<img alt="" loading="lazy" decoding="async" src="${esc(th)}">` : `<span class="ph" data-th="${i.id}"></span>`}<span class="nm">${esc(i.name)}</span><span class="meta">${esc(TY ? TY.label(t.key) : "")} · ${fmtOf(i)}</span></button>`
-    + `<span class="st${i.premium ? " pro" : ""}">${i.premium ? "Premium" : "Standard"}</span>${i.mount ? `<span class="mtag">${MOUNT_TAG[i.mount]}</span>` : ""}`
+  c.innerHTML = `<button class="pick" data-tip="Клацніть — перегляд і категорія · перетягніть у кімнату" aria-label="Переглянути: ${esc(i.name)}"><span class="th">${th ? `<img alt="" loading="lazy" decoding="async" src="${esc(th)}">` : `<span class="ph" data-th="${i.id}"></span>`}<span class="st${i.premium ? " pro" : ""}">${i.premium ? "Premium" : "Standard"}</span></span><span class="nm">${esc(i.name)}</span><span class="meta">${esc(TY ? TY.label(t.key) : "")} · ${fmtOf(i)}</span></button>`
+    + `${i.mount ? `<span class="mtag">${MOUNT_TAG[i.mount]}</span>` : ""}`
     + `<button class="add" aria-label="Додати в сцену: ${esc(i.name)}" data-tip="${locked ? "Доступно в Premium" : "Додати в сцену"}">+</button>`
     + `<button class="fav" aria-pressed="${favs.has(i.id)}" aria-label="${favs.has(i.id) ? "Прибрати з вибраного" : "У вибране"}" data-tip="${favs.has(i.id) ? "Прибрати з вибраного" : "У вибране"}"><svg class="ic"><use href="#i-star"/></svg></button>`
     + (i.own ? `<button class="fav own-del" style="left:9px;right:auto" data-tip="${DESK ? "Прибрати модель (у кошик програми)" : "Прибрати модель із цього браузера"}" aria-label="Прибрати модель"><svg class="ic"><use href="#i-trash"/></svg></button>` : "");
@@ -4753,7 +4777,9 @@ function pwGo(n) {
   if (n >= 4 && !PW.plan) { PW.plan = { mmPerPx: PW.k, scaleOk: PW.scale.ok, H: PW.H, walls: [], openings: [], rooms: [], stairs: [] }; PW.ed.load(PW.plan, PW.src && PW.src.cv, PW.k); }
   if (n === 6) { pwClose(); return; }
   PW.step = n; const ol = $("pwSteps"); ol.innerHTML = "";
-  PW_STEPS.forEach((s, i) => { const li = pwEl("li", "", `<b>${i + 1}</b>${s}`); li.dataset.s = i + 1; if (i + 1 === n) li.setAttribute("aria-current", "step"); if (i + 1 < n) li.classList.add("done"); li.onclick = () => pwGo(i + 1); ol.appendChild(li); });
+  // малювання з нуля: кроків «Розпізнавання» й «Масштаб» немає, тож їх не показуємо, а решту нумеруємо підряд
+  let shown = 0;
+  PW_STEPS.forEach((s, i) => { const skip = PW.manual && (i === 1 || i === 2); if (!skip) shown++; const li = pwEl("li", "", `<b>${shown}</b>${PW.manual && i === 3 ? "Малювання плану" : s}`); li.dataset.s = i + 1; li.hidden = skip; if (i + 1 === n) li.setAttribute("aria-current", "step"); if (i + 1 < n) li.classList.add("done"); li.onclick = () => pwGo(i + 1); ol.appendChild(li); });
   $("pwBack").disabled = n === 1; $("pwNext").textContent = n === 5 ? "Створити 3D" : "Далі"; $("pwNext").disabled = false;   // крок 5 вимикає кнопку, поки є помилки; на інших кроках вона знову доступна
   $("pwDrop").hidden = n !== 1 || !!PW.src;
   PW.ed.setTool(n === 3 ? (PW.ed.tool === "calibrate" ? "calibrate" : "select") : n === 4 ? PW.ed.tool === "calibrate" ? "select" : PW.ed.tool : "select");
@@ -4996,7 +5022,7 @@ function pwSide() {
       b.onclick = () => pwRescale(g.mmPerPx * (g.rel ? PW.k : 1), `${g.src === "labels" ? "за підписаними площами кімнат" : "за шириною дверей"} (підтверджено вами)`); box.append(b); sc.append(box);
     }
     if (!PW.scale.ok) sc.append(note("Розмірні числа на кресленні програма локально не читає. Площі з підписів можна отримати AI-аналізом на кроці «Розпізнавання»: масштаб із них приймається, лише якщо щонайменше дві кімнати погоджуються між собою."));
-    if (PW.manual) { const h = pwEl("div", "pw-box"); h.dataset.k = "drawHelp"; h.append(pwEl("h4", "", "Як малювати"), note("<b>Стіна:</b> клацніть початок, далі кожен наступний кут. Точна довжина: поведіть мишею в потрібний бік, наберіть цифри (мм) і натисніть Enter. Esc — завершити ланцюжок."), note("Швидше: «Прямокутник» одразу ставить кімнату з чотирьох стін, «Ластик» стирає зайве, «Рука» пересуває план. Кнопка «На весь екран» лишає тільки інструменти й полотно. Назву кожного значка показує підказка при наведенні."), note("Коли стіни замкнуться, приміщення з'явиться само. Кути: нова стіна прив'язується до 90° від попередньої, інший кут задайте полем ∠ на панелі (0 — без прив'язки). Значок «Кут»: клацніть стик стін, щоб виставити кут, або три точки для виміру. Криві: «Дуга» — початок, кінець, точка на дузі; «Довільна стіна» — ведіть затиснувши. <b>Двері, Вікно:</b> оберіть інструмент і клацніть по стіні. <b>Вибір:</b> клацніть стіну, щоб змінити довжину, товщину чи видалити."), note("Колесо миші — масштаб, права кнопка — пересування, Ctrl+Z — скасувати. Товщину задайте нижче <b>до</b> малювання стіни; вже намальовану змінюйте через «Вибір».")); add(h); }
+    if (PW.manual) { const h = pwEl("details", "pw-box"); h.dataset.k = "drawHelp"; h.open = uiStore.get("drawHelpOpen", true); h.ontoggle = () => uiStore.set("drawHelpOpen", h.open); const hs = pwEl("summary", ""); hs.append(pwEl("h4", "", "Як малювати")); h.append(hs,note("<b>Стіна:</b> клацніть початок, далі кожен наступний кут. Точна довжина: поведіть мишею в потрібний бік, наберіть цифри (мм) і натисніть Enter. Esc — завершити ланцюжок."), note("Швидше: «Прямокутник» одразу ставить кімнату з чотирьох стін, «Ластик» стирає зайве, «Рука» пересуває план. Кнопка «На весь екран» лишає тільки інструменти й полотно. Назву кожного значка показує підказка при наведенні."), note("Коли стіни замкнуться, приміщення з'явиться само. Кути: нова стіна прив'язується до 90° від попередньої, інший кут задайте полем ∠ на панелі (0 — без прив'язки). Значок «Кут»: клацніть стик стін, щоб виставити кут, або три точки для виміру. Криві: «Дуга» — початок, кінець, точка на дузі; «Довільна стіна» — ведіть затиснувши. <b>Двері, Вікно:</b> оберіть інструмент і клацніть по стіні. <b>Вибір:</b> клацніть стіну, щоб змінити довжину, товщину чи видалити."), note("Колесо миші — масштаб, права кнопка — пересування, Ctrl+Z — скасувати. Товщину задайте нижче <b>до</b> малювання стіни; вже намальовану змінюйте через «Вибір».")); add(h); }
     else add(sc);
     const g2 = pwEl("div", "row2"); g2.append(pwNum("Висота стелі, мм", PW.H, v => { PW.H = Math.max(2000, Math.min(6000, v || 2700)); if (P) P.H = PW.H; pwSide(); }, 10, "ceilH"), pwNum("Товщина нових стін, мм", PW.T, v => { PW.T = Math.max(40, Math.min(800, v || 150)); }, 10, "defT")); add(g2);
   }
