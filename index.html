@@ -2272,8 +2272,26 @@ function planForEdit() {
   return P;
 }
 
+// «Дах для тіні»: стеля в редакторі прихована, щоб було видно кімнату, але сонце крізь неї світити не повинно.
+// Невидима копія стелі лише відкидає тінь, тож пряме сонце потрапляє в кімнату тільки крізь вікна
+const ROOF = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, side: THREE.DoubleSide });
+let roofCaster = null, roofFor = null;
+function syncRoof(mode) {
+  if (roofFor !== ceilingMesh) {
+    if (roofCaster) scene.remove(roofCaster);
+    roofFor = ceilingMesh; roofCaster = null;
+    if (ceilingMesh) {
+      roofCaster = ceilingMesh.clone(true); roofCaster.position.y += 0.02;
+      roofCaster.traverse(o => { o.visible = true; o.userData = {}; if (o.isMesh) { o.material = ROOF; o.castShadow = true; o.receiveShadow = false; o.raycast = () => {}; } });
+      scene.add(roofCaster);
+    }
+  }
+  // низькі стіни й вигляд зверху — це відкритий макет без даху
+  if (roofCaster) roofCaster.visible = mode !== "down";
+}
 function updateWalls() {
   const mode = view === "eye" ? "up" : view === "top" ? "down" : wallMode;
+  syncRoof(mode);
   for (const w of walls) {
     const toCam = camera.position.clone().sub(w.userData.c); toCam.y = 0;
     const hide = mode === "cut" && toCam.dot(w.userData.n) >= 0.2;
@@ -4329,8 +4347,34 @@ function photoJSON() {
   // в геометрію (rotateX), губляться: підлога стає вертикальною. Тому у фото передаємо готові вершини
   const strip = o => { o.traverse(c => { c.userData = {}; if (c.isMesh && c.geometry && c.geometry.type !== "BufferGeometry") { const n = new THREE.BufferGeometry().copy(c.geometry); delete n.parameters; c.geometry = n; } if (c.isMesh) c.material =Array.isArray(c.material) ? c.material.map(photoMat) : photoMat(c.material); }); return o; };
   root.add(strip(floorMesh.clone()));
-  if (view === "eye" && ceilingMesh) { const c = ceilingMesh.clone(); c.visible = true; root.add(strip(c)); }
-  for (const w of walls) if (!w.userData.hidden) root.add(strip(w.clone(true)));
+  // Ракурс «Огляд»: камера дивиться в кімнату крізь зняту стелю й приховані стіни, але для світла вони мають лишатися,
+  // інакше сонце й небо заливають кімнату згори та з боків. Тому стеля й приховані стіни стають односторонніми:
+  // зсередини вони затримують світло, а ззовні камера дивиться крізь них
+  const over = view !== "eye" && view !== "top", UP = new THREE.Vector3(0, -1, 0);
+  const inward = (me, nLocal, into) => { const n = nLocal.clone().transformDirection(me.matrixWorld); return n.dot(into) > 0; };
+  const sided = (m, front) => { const c = photoMat(m).clone(); c.userData = {}; c.side = front ? THREE.FrontSide : THREE.BackSide; return c; };
+  if (ceilingMesh && (view === "eye" || over)) {
+    const c = ceilingMesh.clone(); c.visible = true; strip(c);
+    if (over) { c.updateMatrixWorld(true); c.traverse(me => { if (!me.isMesh) return; const na = me.geometry.attributes.normal, n = new THREE.Vector3(na.getX(0), na.getY(0), na.getZ(0)); me.material = sided(Array.isArray(me.material) ? me.material[0] : me.material, inward(me, n, UP)); }); }
+    root.add(c);
+  }
+  for (const w of walls) {
+    if (!w.userData.hidden) { root.add(strip(w.clone(true))); continue; }
+    if (!over) continue;
+    // прихована стіна: замість кожного її блока — одна площина на внутрішній грані (прорізи лишаються прорізами)
+    const into = w.userData.n.clone().multiplyScalar(-1); w.updateWorldMatrix(true, true);
+    w.traverse(me => {
+      if (!me.isMesh || !me.geometry || me.geometry.type !== "BoxGeometry") return;
+      const p = me.geometry.parameters, alongX = p.width >= p.depth, t = alongX ? p.depth : p.width;
+      const nL = alongX ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0), front = inward(me, nL, into);
+      const g = new THREE.PlaneGeometry(alongX ? p.width : p.depth, p.height); if (!alongX) g.rotateY(Math.PI / 2);
+      g.translate(alongX ? 0 : (front ? t / 2 : -t / 2), 0, alongX ? (front ? t / 2 : -t / 2) : 0);
+      // у блока з окремими матеріалами граней беремо матеріал тієї грані, що дивиться в кімнату
+      let src = me.userData.mat || me.material; if (Array.isArray(src)) src = src[(alongX ? 4 : 0) + (front ? 0 : 1)] || src.find(Boolean);
+      const pl = new THREE.Mesh(new THREE.BufferGeometry().copy(g), sided(src, front)); delete pl.geometry.parameters;
+      me.matrixWorld.decompose(pl.position, pl.quaternion, pl.scale); root.add(pl);
+    });
+  }
   // «коробки» моделей, що не завантажилися, у фото не беремо зовсім: їхній контур (EdgesGeometry) three 0.163 не відновить з JSON
   for (const g of meshes.values()) if (g.visible) {
     const c = g.clone(true), ghosts = []; c.position.y += itemsGroup.position.y;   // предмети стоять на чистовій підлозі
